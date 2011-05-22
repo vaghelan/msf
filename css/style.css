@@ -1,0 +1,540 @@
+/*
+HARE KRSNA!!!!!!
+================
+START CORE CSS 
+================
+*/
+html {
+padding: 0px;
+margin: 0px;
+background: none;
+}
+* {
+font-family: Helvetica;
+}
+#prompt {
+position: absolute;
+background: #222;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+display: block;
+width: 350px;
+padding: 20px;
+z-index: 1000;
+top: 300px;
+left: 25%;
+}
+#prompt p{
+font-size: 160%;
+color: #fff;
+}
+
+#prompt a {
+float: right;
+color: #fff;
+display: block;
+text-decoration: underline;
+}
+
+.transparent {
+        width: 100%; 
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+        filter: alpha(opacity=90);
+        -moz-opacity:0.9;
+        -khtml-opacity: 0.9;
+        opacity: 0.9;
+}
+
+
+#container {
+background: url(../img/bg.png) repeat;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+padding-bottom: 10px;
+width: 932px;
+position: relative;
+margin: 0px auto;
+}
+.invite_more a {
+	background: url(http://www.7thgoswami.com/images/invite.png) no-repeat center top;
+text-indent: -12222px;
+display: block;
+height: 133px;
+width: 136px;
+position: absolute;
+right:0px;
+z-index: 1000;
+}
+.invite_more a:hover {
+	background: url(http://www.7thgoswami.com/images/invite.png) no-repeat center bottom;
+	}
+
+
+.h_wrap {
+	background: url(../img/dashboard.png) no-repeat bottom center;
+	padding: 20px 20px 0px 20px;
+	height: 170px;
+	margin: 0px 0px  20px 0px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.h_wrap img {
+float: left;
+margin-right: 20px;
+}
+
+ul#menu{
+position: relative;
+width: 100%;
+padding-top: 0px;
+margin-bottom: 10px;
+}
+
+ul#menu li{
+font-size: 1.2em;
+width: 23%;
+display: block;
+line-height: 34px;
+float: left;
+text-align: center;
+}
+ul#menu li a{
+color: #eee;
+text-shadow: #333 0px 1px 0px;
+text-decoration: none;
+display: block;
+}ul#menu li a:hover{
+		color: #333;
+		text-decoration: underline;
+		text-shadow: #ccc 0px 1px 0px;
+		}
+
+.active {
+background: url(../img/bg.png) repeat;
+-moz-border-radius: 10px 10px 0px 0px;
+-webkit-border-radius: 10px 10px 0px 0px;
+font-weight: bold;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+ul#menu li.active a {
+color: #333 !important;
+text-shadow: #fff 0px 1px 0px;
+}
+
+ul#menu li a:hover {
+	color: #333;
+}	
+
+
+
+.logout a {
+position: absolute;
+right: 20px;
+margin-right: 20px;
+color: #ccc !important;
+display: block;
+text-shadow: #333 0px 1px 0px;
+
+}
+
+/* RANK */
+#rank {
+display: block;
+height: 33px;
+width: 182px;
+margin-top: 10px;
+text-indent: -10000px;
+position: absolute;
+background-repeat: no-repeat;
+}
+
+.rank_0, .rank_1, .rank_2, .rank_3{
+background-image: url(../img/ranks.png);
+
+}
+
+.rank_0 {
+background-position: 0px 0px!important;
+}
+.rank_1 {
+background-position: 0px -50px !important;
+}
+.rank_2 {
+background-position: 0px -99px!important;
+}
+.rank_3 {
+background-position: 0px -149px!important;
+}
+
+
+.invite{
+background: aqua;
+margin: 20px 0px;
+}
+#scores-form {
+width: 890px;
+margin: 0px 20px 20px 20px;
+
+}
+#scores-form .x-panel-body, #scores-form .x-panel-body-noheader, #scores-form .xedit-grid, #teams-form .x-panel-body, #teams-form .x-panel-body-noheader, #teams-form .xedit-grid{
+height: 200px !important;
+}
+
+#teams-form {
+width: 100% !important;
+}
+
+.x-window-plain, .x-panel-btns-ct, . x-panel-bwrap .x-panel-body-noheader{
+width: 420px !important;
+}
+.x-grid3-header-offset{
+
+width: 890px !important;
+}
+/* btn */
+
+.x-btn-text-icon .x-btn-center .x-btn-text {
+font-size: 120%;
+}
+
+
+.dashboard{
+display: block;
+height: 126px;
+}
+.dashboard h1 {
+font-size: 20px;
+color: #e99208;
+text-shadow: #111 0px 1px 0px;
+}
+
+
+ul.dbord_info {
+margin-top: 20px;
+}
+
+ul.dbord_info li {
+float: left;
+color: #fff;
+margin-right: 20px;
+
+}
+li.username {
+font-size: 1.1em;
+width: 240px;
+height: 50px;
+border-right: 1px solid #fff;
+margin-right: 40px !important;
+
+}
+	ul.dbord_info li h2 {
+	text-align: center;
+	font-size: 2.5em;
+	color: #F9F7ED;
+	text-shadow: #111 0px 1px 0px;
+	}ul.dbord_info em { color: #073744; font-size:90%;}
+	
+	ul.dbord_info li:first-child h2 {
+	color: 
+	}
+
+
+.add {
+color: #fff !important;
+font-size: 16px !important;
+line-height: 28px;
+text-shadow: #333 0px 1px 0px;
+height: 32px;
+background-image: none !important;
+background: url(../img/add_btn.png) top center no-repeat !important;
+text-align: center !important;
+padding: 0px 20px !important;
+}
+.add:hover {
+background-position: bottom center !important;
+}
+.x-btn-center {
+width: 150px !important;
+text-align: center !important;
+}
+
+#scores-form .x-btn-center, #scores-form .x-btn-left, #scores-form .x-btn-right {
+background: none !important;
+} 
+
+.x-panel-body-noheader {
+	height: 100px !important;
+	}
+	.x-resizable-pinned .x-window-body {
+	height: 160px !important;
+	}
+	.x-resizable-pinned, .x-resizable-pinned .x-window-body, .x-resizable-pinned .x-panel-btns-ct, .x-resizable-pinned .x-panel-body-noheader {
+	width: 400px !important;
+	}
+	 .x-resizable-pinned .x-column-inner, .x-resizable-pinned .x-form-label-top {
+	 width: 380px !important;
+	 }
+	 .x-resizable-pinned input {
+	 	width: 300px !important;
+	 }
+	
+	
+.b_btn {
+		color: #fff;
+        padding: 2px 5px;
+        border: 2px solid;
+        border-color: #7bf #07c #07c #7bf;
+        background-color: #09f;
+        font-family: Georgia, ..., serif;
+        font-size: 18px;
+        display: block;
+        height: 30px;
+}
+
+.b_btn:active {
+	color: #222;
+	border-color: #7bf #7bf #07c #07c;
+
+}
+
+
+.wrapper {
+padding: 0px 20px;
+}
+	.wrapper h2 {
+		color: #0e9bfd;
+		text-shadow: #fff 0px 1px 0px;
+		font-size: 1.1em;
+		margin: 16px 0px 5px 0px;
+	}
+	.wrapper p {
+		color: #333 !important;
+		font-size: 0.9em;
+		margin-bottom: 10px;
+		}
+.wrapper textarea {
+	padding: 4px;
+	font-size: 0.9em;
+	color: #757575;
+}
+.wrapper textarea:focus, .wrapper input:focus {
+background: #CDEB8B;
+color: #333;
+}
+.x-grid3-row-selected > * {background: #CDEB8B !important;}
+
+#email_list {
+width: 30% !important;
+}
+
+#message {
+width: 65% !important;
+}
+
+.b_btn {
+/*
+height: 60px;
+font-size: 1.4em;
+float: right;
+*/
+}
+
+/* FIX */
+.qa {
+display:none;
+}
+.x-tool-close, #ext-gen162 {
+display: none !important;
+}
+
+/* 
+================
+END CORE CSS 
+================
+*/
+/* CLEARFIX -- fixes clearing issue for floated elements */
+	.fix:after{content:".";display:block;height:0;clear:both;visibility:hidden;} .fix{display:inline-block;} * html .fix{height:1%;} .fix{display:block;}
+
+#login_form, #signup_form  {
+        width: 340px;
+        border: 1px solid white;
+ /*        margin: 250px auto; */
+ 		margin-left: 25%;
+        padding: 2em;
+        -moz-border-radius: 7px;
+		border: 5px solid #ccc;
+		margin: 0px auto !important;
+		background: url(../img/bg_login.png) center 20% no-repeat;
+		display: block;
+		color: #fff;
+} 
+.img_sign {
+float: left;
+background: url(http://7thgoswami.com/wp-content/uploads/2011/04/bt-banner1.png) no-repeat left center;
+display: block;
+height: 60px;
+width: 60px;
+border: 1px solid #ccc;
+margin-right: 14px;
+}
+#login_form h1, #signup_form h1 {
+color: #FF7400 !important;
+font-size: 2.2em;
+text-shadow: #222 0px 1px 0px;
+}
+#signup_form p{
+font-size: 0.9em;
+color: #ccc;
+}
+#login_form input, #signup_form input{
+	line-height: 24px;
+	padding: 3px;
+	font-size: 130%;
+   -moz-border-radius: 3px;
+   color: #03B7FF;
+}
+#login_form a, #signup_form a {
+margin-left: 30px;
+color: #fff !important;
+font-size: 1.3em;
+}
+
+#login_form input[type="submit"], #signup_form input[type="submit"] {
+color: #333;
+}
+
+h1, h3 {
+color: #333;
+}
+h1 { font-size: 150%}
+
+
+#subject {
+font-size: 1.2em;
+padding: 4px;
+width: 400px;
+}
+#post_mail {
+font-size: 0.95em;
+width: 95% !important;
+}
+
+/*
+
+Porofile
+*/
+
+#profile label {
+color: #757575;
+display: block;
+width: 200px;
+margin: 0px 0px 0px 0px;
+font-size: 0.85em;
+}
+
+#profile input, select {
+display: block;
+font-size: 0.85em;
+padding: 2px;
+margin: 0px 0px 8px 0px;
+width: 220px;
+}
+#profile .left, #profile .right {
+display: block;
+width: 48%;
+} 
+
+#profile .left{
+float: left;
+}
+
+#profile .right {
+float: right;
+}
+
+
+.admin {
+color: #4096EE;
+font-size: 90%;
+display: block;
+margin-left: 20px;
+margin-top: 18px;
+}
+.m_form {
+margin-left: 28%;
+}
+/* #login_input{ */
+/*
+input[type=text], input[type=password] {  
+
+        display: block;
+        margin: 0 0 1em 0;
+        width: 280px;
+        border: 5px;
+        -moz-border-radius: 1px;
+        -webkit-border-radius: 1px;
+        padding: 1em;
+}
+
+
+ */
+ /*
+input[type=submit], form a { 
+        border: none;
+        margin-right: 1em;
+        padding: 6px;
+        text-decoration: none;
+        font-size: 12px;
+        -moz-border-radius: 4px;
+        background: #348075;
+        color: white;
+        box-shadow: 0 1px 0 white;
+        -moz-box-shadow: 0 1px 0 white;
+        -webkit-box-shadow: 0 1px 0 white;
+
+}
+*/
+/*
+input[type=submit]:hover, form a:hover { 
+
+        background: #287368;
+        cursor: pointer;
+}
+*/
+
+
+/* Validation error messages */
+
+.error {
+        font-size: 15px;
+        background: #FFFF88;
+		padding: 4px;
+		margin: 10px 0px;
+		color: #222 !important;
+		border: 1px solid #fff;
+}
+/*
+fieldset {
+        width: 300px;
+        margin: auto;
+        margin-bottom: 2em;
+        display: block;
+}
+
+/* FOR FUN */
+/*
+h1 {
+        text-shadow: 0 1px 0 white;
+} 
+
+
+	#container {
+	 width: 600px;
+	 margin: auto;
+	font-family: helvetica, arial;
+	}
+
+*/
+

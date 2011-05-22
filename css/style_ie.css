@@ -1,0 +1,62 @@
+/*
+HARE KRSNA!!!!!!
+================
+IE START CORE CSS 
+================
+*/
+html {
+padding: 0px;
+margin: 0px;
+background: url(http://7thgoswami.com/wp-content/themes/platformpro_NEW/images/bg_tt.jpg) repeat -300px 0px;
+}
+
+#login_form, #signup_form  {
+ 	width: 420px;
+    left: 25%;
+    position: absolute;
+  }
+  .h_wrap {
+	background: url(../img/dashboard.png) no-repeat top center;
+	padding: 20px 20px 0px 20px;
+	height: 170px;
+	margin: 0px 0px  20px 0px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+ul#menu{
+	position: relative;
+	width: 100%;
+	margin-top: -10px;
+	margin-bottom: 0px;
+}
+
+
+.dashboard{
+display: block;
+height: 106px;
+}
+
+#rank {
+display: block;
+height: 33px;
+width: 182px;
+margin-top: 30px;
+left: 160px;
+text-indent: -10000px;
+position: absolute;
+background-repeat: no-repeat;
+}
+
+#email_list {
+width: 30% !important;
+height: 90px;
+}
+
+#message {
+width: 65% !important;
+height: 90px;
+}
+.invite_more a {
+
+top:50px;
+}
