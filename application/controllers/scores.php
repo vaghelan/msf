@@ -162,6 +162,8 @@ class Scores extends CI_Controller
     $this->scores_model->update_children();
     echo "done";
   }
+  
+ 
 
                         
 }

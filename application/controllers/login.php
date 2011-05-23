@@ -8,26 +8,49 @@ class Login extends CI_Controller
    parent::__construct();
  }
  
-  private function is_logged_in()
+  private function get_is_logged_in()
 	{
 		$is_logged_in = $this->session->userdata('is_logged_in');
-		if(!isset($is_logged_in) || $is_logged_in != true)
+		//if(!isset($is_logged_in) || $is_logged_in != true)
+		if($is_logged_in == FALSE)
 		{
-		  log_message('debug', "Cookie not found so redirect to login");
-			redirect('login');
-			die();		
-		}		
+      return 0;
+		}	
+		
+		return 1;
+   	
 	}	 
 	
  
  function index()
  {
-  if ($this->session->userdata('recruit_id') != "")
-    $data['rid'] = $this->session->userdata('recruit_id');
+  if ($this->get_is_logged_in())
+  { 
+    log_message('debug', 'redirect to scores page');
+    redirect('scores');
+
+    
+  }
   else
-    $data['rid'] = 0;  
+  {
+    $rid = $this->session->userdata('recruit_id');
+    
+    if ($rid == FALSE)
+    {
+      $data['rid'] = '0';
+      log_message('debug', "rid = " . $data['rid']);
+    }  
+    else
+    {
+      $data['rid'] = $this->session->userdata('recruit_id');
+      log_message('debug', "rid 1 = " . $data['rid']);
+
+     }     
+
+   $this->loadView('login_form', $data);   
+  }      
    
-   $this->loadView('login_form', $data);
+   
  }
  
  private function loadView($form_name, $data)
@@ -49,10 +72,10 @@ class Login extends CI_Controller
 				'username' => $this->input->post('username'),
 				'is_logged_in' => true,
 				'user_id' => $result,
-				'current_event_id' =>  $this->events_model->get_current_event_id()
+				'current_event_id' =>  $this->events_model->get_current_event_id(),
+				'recruit_id' =>  $this->membership_model->get_user_recruiter_id($result)
 			);
 			$this->session->set_userdata($data);
-			$this->session->set_userdata('recruit_id', $this->membership_model->get_user_recruiter_id($result));
 		  $this->membership_model->update_last_logged_in($result);
 			
 			log_message('debug', "User Name: " . $this->session->userdata('username') );
@@ -90,15 +113,25 @@ class Login extends CI_Controller
  
  function signup($id)
  {
+   if ($this->get_is_logged_in())
+   { 
+    redirect('scores');
+    return;
+   }
+ 
+ 
     if (!isset($id))
       $id = 0;
       
-    $this->session->set_userdata('recruit_id', $id);  
+    //change the session recruit id ..attis time only recruit id is in session  
+    $this->session->set_userdata('recruit_id', $id);
+    
+      
     $data['recruit_id'] = $id; 
     $data['username'] = $this->membership_model->get_user_name_by_id($id);
     if ($data['username'] == "")
     {
-      echo "Recruiter does not exist in the system ID = " . $id . ". URL given to you is invalid. Please delete the cookie and retry with right URL.";
+     echo "Recruiter does not exist in the system ID = " . $id . ". URL given to you is invalid. Please delete the cookie and retry with right URL.";
       return;
     }
 		$this->loadView('signup_form', $data);	
@@ -117,7 +150,7 @@ class Login extends CI_Controller
       return;
     
     
-    }  
+   }  
 
 
 	//	if (!$this->email_check($this->input->post('email_address')))
@@ -190,7 +223,14 @@ class Login extends CI_Controller
 	
 	function logout()
 	{
+	  $uid = $this->session->userdata('user_id'); 	  
+
+		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('is_logged_in');
+		$this->session->unset_userdata('user_id');
+		$this->session->unset_userdata('current_event_id');
 		$this->session->sess_destroy();
+		$this->session->set_userdata('recruit_id', $uid);
 		$this->index();
 	}
 

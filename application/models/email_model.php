@@ -44,14 +44,17 @@ margin: 10px;
 background: #CDEB8B;
 border: 1px solid #73880A;
 font-size: 16px;
-}</style>
+}
+p {margin: 10px 0px 10px 0px;}
+</style>
    
    </head> <body> 
-Welcome ".$name."!" .
-
-"
 <img src=\"http://7thgoswami.com/images/header.jpg\"/></br>
-<p>Thank you for subscribing to the Bhaktivinoda Thakura International
+
+
+<p>Welcome " . $name. "!" . "</p>" .
+
+"<p>Thank you for subscribing to the Bhaktivinoda Thakura International
 Festival of 1,008 book distributors.</p>
 
 <p>Everyone on our team cheered when they saw that you had joined us.</p>
@@ -77,8 +80,8 @@ disappearance day of the saint Srila Bhaktivinoda Thakura.</p>
 
 <p>To be counted as one of the 1,008 distributors, you must:
 </p>
-<b>a) distribute at least one BBT book between May 27th and June 30th.</b></br>
-<b>b) Report your progress to www.7thGoswami.com.</b>
+<b>a) distribute at least one BBT book between May 27th and June 30th.</b><BR>
+<b>b) Report your progress to www.7thGoswami.com.</b><BR>
 
 <p>There will be other progressive levels of achievement to aspire for,
 if you wish. We’ll give you more details soon.</p>
@@ -100,25 +103,22 @@ joining us for this exciting event.
 </p>
 <p>We will be in touch with more information and exciting news soon.
 </p>
-With gratitude,</br>
+With gratitude,<BR>
 Vaisesika Dasa
-</br></br>
+<BR>
 
 <p>P.S.  A story (as told by Sri Caitanya Mahaprabhu to Sanatana Goswami):
-</p></br>
-Once a very poor man, suffering due to poverty, met an all-knowing astrologer. The astrologer read the man’s chart and told him, “You are not actually a poor man. Your father, who was very rich, left you an abundant inheritance when he died. Now all you have to do is dig it up.”
-
-<p>The astrologer next told the poor man exactly where the treasure was buried and gave him specific directions about the best way to dig for it.</p>
-
-<p>Lord Caitanya said that when a poor man finds out that he is actually rich, his entire perspective in life changes instantly and he becomes happy.
+</p>
+<p>Once a very poor man, suffering due to poverty, met an all-knowing astrologer. The astrologer read the man’s chart and told him, “You are not actually a poor man. Your father, who was very rich, left you an abundant inheritance when he died. Now all you have to do is dig it up.”
+The astrologer next told the poor man exactly where the treasure was buried and gave him specific directions about the best way to dig for it.
+Lord Caitanya said that when a poor man finds out that he is actually rich, his entire perspective in life changes instantly and he becomes happy.
 </p>
 <p>Similarly, when those suffering in this world receive transcendental knowledge, they become happily enriched with spiritual knowledge.
-</p>
-<p>The Vedas not only direct us to our highest prospect in life, but they also show us the means to attain it.
+The Vedas not only direct us to our highest prospect in life, but they also show us the means to attain it.
 </p>
 <p>These books are not ordinary. Reading even one word or one line within them can to awaken a person to his or her eternal, blissful relationship with Krsna, the Supreme Person.
 </p>
-Bhaktivinoda Thakura is a great Acarya (teacher of transcendental knowledge) who, near the end of the 18th century, revitalized the sankirtana movement of Lord Caitanya Mahaprabhu and also sent books of transcendental knowledge outside India to benefit people of the world. Other great Acaryas, including Srila Bhaktisiddhanta Saraswati and Srila A.C. Bhaktivedanta Swami did the same. And now we have an opportunity to assist them.
+<p>Bhaktivinoda Thakura is a great Acarya (teacher of transcendental knowledge) who, near the end of the 18th century, revitalized the sankirtana movement of Lord Caitanya Mahaprabhu and also sent books of transcendental knowledge outside India to benefit people of the world. Other great Acaryas, including Srila Bhaktisiddhanta Saraswati and Srila A.C. Bhaktivedanta Swami did the same. And now we have an opportunity to assist them.</p>
 </body>
 </html>
 ";
@@ -177,18 +177,21 @@ font-size: 16px;
 }</style></header>
 <div>
 <img src=\"http://7thgoswami.com/images/header.jpg\"/></br>
-<p> <em style=\"color: #00202e; font-size=110%\">" . $message . "</em></p> With gratitude, ".$name."</br>" .
+<p> <em style=\"color: #00202e; font-size=110%\">" . $message . "</em></p> With gratitude, ".$name . 
 "<p>
+<BR>
 We bring you warm greetings from ISKCON of Silicon Valley (ISV) where our mission is to serve all living beings by widely distributing the Holy Names
 of Krishna.
 </p>
 <p>
+<BR>
 We invite you to join us by registering at ".$invite_link." for a fun and blissful drive that will bring good fortune to everyone that it touches.
 </p>
 <p>
+<BR>
 Benefits for you:
 </p>
-
+<BR>
 <ul>
 	<li>
 	Feel great about yourself
@@ -217,21 +220,22 @@ Benefits for you:
 </ul>
 
 <p>
+<BR>
 Over a three-week period starting this June, 2011, we will assemble a team of at least 1,008 members to actively distribute transcendental books to
 benefit people of the world. We will offer the results of this event to the great Acarya (world teacher of spiritual knowledge) Bhaktivinoda Thakura on
 his disappearance day, Thursday, June 30th. Around the same time last year, with much less time to plan, 550 people joined this campaign. We are
 starting earlier and in a much better organized way this year.
 </p>
 <p>
+<BR>
 Our principle for success is to get a lot of people, each one doing a little and while doing making it fun and easy. And to make it even more exciting,
 we ask everyone to invite their friends, family members, and colleagues to join them, asking everyone to do a small bit.
 </p>
-
-
 <p>
+<BR>
 This website ".$invite_link." serves as kit to help you and your friends get started. It contains:
 </p>
-
+<BR>
 <ul>
 	<li>
 	Information on where &amp; how to get books, report scores, and so on
@@ -260,42 +264,51 @@ This website ".$invite_link." serves as kit to help you and your friends get sta
 </ul>
 
 <p>
+<BR>
 By joining this festival you will feel inner happiness because you will be contributing directly to the spiritual welfare of people of the world.
 </p>
 
 <p>
+<BR>
 In the Bhagavad Gita, Sri Krsna says that the person who spreads spiritual knowledge does the highest welfare work and is dearest to Him. And there has
 never been a better time to please Krsna in this most exalted way.
 </p>
 
 <p>
+<BR>
 People of the world are unsettled as they see their fellow citizens rising up against their leaders, while the leaders are blindly employing stopgap
 measures or violence to stem the tide. The Middle East is broiling. Japan, New Zealand, Chile, and Haiti are all facing epic natural and man-made
 environmental crises. Even affluent nations are going through times of economic uncertainty and working people everywhere are juggling finances just to
 stay afloat. And these are a few samples of what is happening throughout the world.
 </p>
 <p>
+<BR>
 Fading is the promise of happiness through material acquisition or advanced scientific research. People are now hungry for a spiritual practice that
 will give them direct experience of the supreme transcendence and tangible inner happiness that they can share with others.
 </p>
 <p>
+<BR>
 The ancient Vedas — now available in beautifully presented books – show this path. We have stockpiled these books and are ready to distribute them to
 the masses.
 </p>
 <p>
+<BR>
 <b>You can make a difference!</b>
 </p>
 <p>
+<BR>
 Join our team of world-wide distributors for this unprecedented mission that will distribute thousands of transcendental books, providing effective
 spiritual solutions to sincere people of the world.
 </p>
 <p>
+<BR>
 Following Sri Caitanya Mahaprabhu and displaying his own compassion for the people of the world, Bhaktivinoda Thakura sent transcendental books to
 people outside India. As the first Acharya in our line to do so, he sent the book entitled, <b><i>Caitanya Mahaprabhu, His Life and Precepts,</i></b>
 to scholars and literary luminaries of the time, thereby planted seeds for the sankirtan movement (the movement for cooperatively spreading spiritual
 knowledge) in the West.
 </p>
 <p>
+<BR>
 Bhaktivinoda entrusted Sri Caitanya Mahaprabhu’s sankirtan movement to his son, Srila Bhaktisiddhanta Saraswati, who in turn passed it on to his
 disciples, among whom was Srila A.C. Bhaktivedanta Swami Prabhupada, who personally brought Lord Caitanya’s mission to the United States in 1965.
 Following the order of his spiritual master and the example of Srila Bhaktivinoda, Srila Prabhupada brought trunk loads of his transcendental books on
@@ -303,9 +316,11 @@ Krishna consciousness for distribution. He also tirelessly traveled throughout t
 science of Krsna consciousness as taught by Sri Caitanya Mahaprabhu.
 </p>
 <p>
+<BR>
 Bhaktivinoda Thakura says . . .
 </p>
 <p>
+<BR>
 <i>
 jive doya, krishna-nam-sarva-dharma-sar
 <br/>
@@ -313,12 +328,14 @@ The showing of compassion to all fallen souls by loudly chanting the holy name o
 </i>
 </p>
 <p>
+<BR>
 Passed down through this chain of teachers and students (disciplic succession), this treasure of transcendental knowledge has now been laid at our
 doorsteps by Lord Caitanya and his followers. And they are inviting us to distribute this knowledge. His Divine Grace A.C. Bhaktivedanta Swami
 Prabhupada has put all of Lord Caitanya’s teachings into beautifully illustrated and perfectly bound books that are waiting to be distributed to
 millions of people all over the world.
 </p>
 <p>
+<BR>
 Help pass these books on!
 </p>
 <p>
@@ -329,33 +346,42 @@ quote from letter to Lilavati; 26 March, 1972)
 </i>
 </p>
 <p>
+<BR>
 Srila Prabhupada not only fulfilled Bhaktivinoda Thakura’s prediction that “a great General would soon appear to spread Lord Caitanya’s teaching’s all
 over the world,” but also ensured that it would continue through the generations by passing the torch to his disciples and followers, training them and
 empowering them to “do as he had done.”
 </p>
 <p>
+<BR>
 <b>
 <br/>
+
 Catch these divine orders from the disciplic succession and in honor of Bhaktivinoda Thakura.
 </b>
 </p>
-
+<BR>
 <p>
 <b>
 Reap the mercy of Bhaktivinoda Thakura!
+<BR>
 <br/>
 It’s fun and easy.
 </b>
 </p>
 <p>
+<BR>
 We look forward to assist you.
 </p>
 <p>
-With Gratitude
+<BR>
+With Gratitude,
 </p>
-<p>
-Vaisesika Dasa
-</p>
+<BR>
+<p>" . 
+
+$name .
+
+"</p>
 </div> </html>";   
    
    $this->email->message($msg1);

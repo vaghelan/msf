@@ -9,15 +9,15 @@
           echo "<p class=\"error\"> " . $error_message . "</p>"; 
        } 
   ?>
-   
+   <h5>Login</h5>
     <input 
     	type="text"
-    	value="Login Name" 
+    	value="Login" 
     	name="username"
-    	onblur="if(value=='') value = 'Login Name'" 
+    	onblur="if(value=='') value = 'Login'" 
     	onfocus="if(value=='Login Name') value = ''"
     ><br><br>
-    
+    <h5>Password</h5>
     <input 
     	type="password" 
     	value="Password" 

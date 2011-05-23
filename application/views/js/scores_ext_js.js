@@ -13,7 +13,11 @@
   
 
   function saveScore(oGrid_event)
-  {           
+  {      
+     Ext.MessageBox.show({
+       msg: 'Saving the score, please wait...',
+       wait:true,
+   });     
     Ext.Ajax.request({   
     waitMsg: 'Please wait...',
     url: $("#base-url").html() + 'index.php/scores/save_score_ajax',
@@ -87,6 +91,10 @@
   {
      if(isAddScoreFormValid())
      {
+      Ext.MessageBox.show({
+       msg: 'Adding the score, please wait...',
+       wait:true,
+      });  
       Ext.Ajax.request({   
         waitMsg: 'Please wait...',
         url: $("#base-url").html() + 'index.php/scores/add_score_ajax',
@@ -136,6 +144,10 @@
           prez.push(selections[i].json.id);
          }
          var encoded_array = Ext.encode(prez);
+        Ext.MessageBox.show({
+          msg: 'Deleting the score, please wait...',
+          wait:true,
+         });  
          Ext.Ajax.request({  
             waitMsg: 'Please Wait',
             url: $("#base-url").html() + 'index.php/scores/delete_scores', 
@@ -147,6 +159,7 @@
               var result=eval(response.responseText);
               switch(result){
               case 1:  // Success : simply reload
+                Ext.MessageBox.alert('Result', 'Scores Deleted!!');
                 DataStore.reload({params: {start: 0, limit: PageSize}});
                 reloadAjaxParams();
                 break;

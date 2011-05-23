@@ -76,12 +76,13 @@ class Invite extends CI_Controller
        $result = $this->email_model->send_invite_email($email, $user_info->name, $invite_link, $message);
        if ($result == 0)
        {
-         echo "Error: Failed to send invite to : " . $email . "Please send email to ISV technical support ";
-         return;
+         //echo "Error: Failed to send invite to : " . $email . "Please send email to ISV technical support ";
+         echo 0;
        }
        
     }
-    echo "Your friends invited!!";    
+    echo 1;
+    // echo "Your friends invited!!";    
   
   }
 }

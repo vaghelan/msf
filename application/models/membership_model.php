@@ -113,6 +113,47 @@ class Membership_model extends CI_Model {
 		$row =  $q->row();
     return  $row->recruiter_id;    
   }
+
+  function get_total_num_users()
+  {
+		$q = $this->db->get('users');
+
+    return($q->num_rows);
+  }
+
+  function get_total_book_distributors_all()
+  {
+  
+  	$this->db->where('rank_id > 0');
+  	$q = $this->db->get('users');
+    //echo $this->db->last_query();
+    return($q->num_rows);
+  }
+
+  function get_total_registered_today()
+  {
+  	
+  	$today = date('Y-m-d H:i:s', mktime(0, 0, 0, date("m")  , date("d"), date("Y")));
+
+  	$this->db->where('timestamp_registered >= ' . "'" . $today . "'");
+  	$q = $this->db->get('users');
+  	//echo $this->db->last_query();
+
+    return($q->num_rows);
+  }
+  
+  function get_total_registered_last_week()
+  {
+    $to = date('Y-m-d H:i:s', mktime(0, 0, 0, date("m")  , date("d"), date("Y")));
+    $from = date('Y-m-d H:i:s', mktime(0, 0, 0, date("m")  , date("d") - 7, date("Y")));
+
+   	$this->db->where('timestamp_registered >= ' . "'" . $from . "'" . ' and timestamp_registered <= '. "'" . $to . "'");
+  	$q = $this->db->get('users');
+  	//echo $this->db->last_query();
+    return($q->num_rows);    
+  }  
+  
+
   
   function get_user_team_score($userid)
   {
@@ -381,6 +422,8 @@ class Membership_model extends CI_Model {
       return $arr;
   
   }
+  
+
   
   function update_member_team_score_by_change($userid, $score_change)
   {

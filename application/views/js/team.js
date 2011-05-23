@@ -2,7 +2,7 @@
   var PageSize = 10;
   var ColumnModel;
   var ListingEditorGrid;
-  
+   
   function SendInvite()
    {
       // $('textarea[name="ta"]').val();
@@ -30,37 +30,42 @@
       {
           Ext.MessageBox.alert('Error:', 'Please enter your message or blank out');
           // alert("Please enter your message or blank out");
-          retutn;
+          return;
       
       }
-        
-      if (window.XMLHttpRequest)
-        {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
-        }
-      else
-        {// code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-        }
-      xmlhttp.onreadystatechange=function()
-        {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200)
-          {
-          //document.getElementById("error_msg").innerHTML=xmlhttp.responseText;
-          Ext.MessageBox.alert('HariBol!!', xmlhttp.responseText);
-          //alert(xmlhttp.responseText);
-          }
-        }
-      xmlhttp.open("POST", $("#base-url").html() + "index.php/invite/send_invite_ajax", true);  
-      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-   
-      args = "email_list=" + email_list;
-      args = args + "&message="  + message;
+
+      Ext.MessageBox.show({
+           msg: 'Sending Invite, please wait...',
+           wait:true
+       });   
       
-      
-      xmlhttp.send(args);
-   
-   }
+      Ext.Ajax.request({  
+      waitMsg: 'Please Wait',
+      url: $("#base-url").html() + 'index.php/invite/send_invite_ajax',
+      params: { 
+         email_list: email_list, 
+         message:  message
+        }, 
+      success: function(response){
+        var result=eval(response.responseText);
+        switch(result){
+        case 1:  // Success : simply reload
+          
+          Ext.MessageBox.alert('Result', 'Your frieds invited!!');
+          document.getElementById("email_list").value="";
+          document.getElementById("message").value="";
+          break;
+        default:
+          Ext.MessageBox.alert('Warning','Your friends could not be invited');
+          break;
+        }
+      },
+      failure: function(response){
+        var result=response.responseText;
+        Ext.MessageBox.alert('error','could not connect to the server. retry later');      
+        }
+      });
+  }
   
   Ext.onReady(function() {
   

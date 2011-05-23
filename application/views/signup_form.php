@@ -54,7 +54,7 @@
 			<?php echo form_hidden('recruit_id', $recruit_id); ?>
 <br>			
 			 
-			<h5>Personal Information</h5>
+			<h5>Full Name</h5>
 			<input type="text" 
 			value="Full Name" 
 			name="name"
@@ -62,6 +62,7 @@
 	    	onfocus="if(value=='Full Name') value = ''"
 			><br><br>
 			
+			<h5>Email Address</h5>
 			<input 
 			type="text"
 			 value="Email Address" 

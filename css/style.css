@@ -396,13 +396,26 @@ color: #ccc;
    color: #03B7FF;
 }
 #login_form a, #signup_form a {
-margin-left: 30px;
+margin-left: 50px;
 color: #fff !important;
-font-size: 1.3em;
+font-size: 1.1em;
 }
 
 #login_form input[type="submit"], #signup_form input[type="submit"] {
-color: #333;
+
+		color: #fff;
+        padding: 2px 5px;
+        border: 2px solid;
+        border-color: #7bf #07c #07c #7bf;
+        background-color: #09f;
+        font-family: Georgia, ..., serif;
+        font-size: 24px;
+        height: 36px;
+}
+
+#login_form input[type="submit"]:active, #signup_form input[type="submit"]:active {
+	color: #222;
+	border-color: #7bf #7bf #07c #07c;
 }
 
 h1, h3 {

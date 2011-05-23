@@ -57,6 +57,14 @@ class Members extends CI_Controller
    // echo $_GET['new_password'];
    echo "Name Saved";   
   } 
+  
+  
+  function get_total_book_distributors_by_event()
+  {
+     echo $this->membership_model->get_total_book_distributors_by_event($this->session->userdata('user_id'), $this->session->userdata('current_event_id'));
+  }
+
+
 
 	
 }	
