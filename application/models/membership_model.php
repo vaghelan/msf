@@ -113,6 +113,22 @@ class Membership_model extends CI_Model {
 		$row =  $q->row();
     return  $row->recruiter_id;    
   }
+  
+  function get_user_recruiter_name($userid)
+  {
+    $rid = $this->get_user_recruiter_id($userid);
+    
+    $this->db->select('name');
+		$this->db->where('id', $rid);
+		$q = $this->db->get('users');
+
+    if($q->num_rows == 0)
+		{
+			return "";
+		}
+		$row =  $q->row();
+    return  $row->name;    
+  }
 
   function get_total_num_users()
   {

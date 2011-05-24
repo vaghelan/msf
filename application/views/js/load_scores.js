@@ -5,6 +5,7 @@
         //  reloadMyTotalScore();
         //  reloadTotalTeamScore();
           reloadNumTeamMembers();
+          reloadTeamLeader();
           reloadRank();                   
   }
 
@@ -139,4 +140,28 @@ function reloadMyScore()
         xmlhttp.open("GET", $("#base-url").html() + "index.php/teams/get_num_team_members_ajax",true);
         xmlhttp.send();
      }
+     
+     function reloadTeamLeader()
+     {
+            var xmlhttp;
+        if (window.XMLHttpRequest)
+          {// code for IE7+, Firefox, Chrome, Opera, Safari
+          xmlhttp=new XMLHttpRequest();
+          }
+        else
+          {// code for IE6, IE5
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+          }
+        xmlhttp.onreadystatechange=function()
+          {
+          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+            document.getElementById("teamleader").innerHTML=xmlhttp.responseText;
+            }
+          }
+        xmlhttp.open("GET", $("#base-url").html() + "index.php/teams/get_team_leader_ajax",true);
+        xmlhttp.send();
+     
+     }
+     
  

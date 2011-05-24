@@ -41,6 +41,8 @@ Rank_ID My Score By Event  Team Score By Event  My Total Score  Team Total Score
         <li><h2 id="myscore_eventid">...</h2><em>My book score</em> </li> 
 	    <li><h2 id="teamscore_eventid"> ...</h2><em>My team score</em> </li>
 	    <li><h2 id="teammembers_eventid"> ...</h2><em>Total team members</em> </li>
+<!--	    <li><h2 id="teamleader"> ...</h2><em>My Team Leader</em> </li> -->
+	    
 		<div class="invite_more"><?php echo anchor('teams', 'Invite more friends'); ?></div>
 <!--
 	    <li><h2 id="myscore_total"> ...</h2><em>my total score </em></li>
