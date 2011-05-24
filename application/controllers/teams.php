@@ -32,6 +32,7 @@ class Teams extends CI_Controller
     $data['userdata'] = $this->membership_model->get_user_details_by_name($this->session->userdata('username'));   
     $data['current_event'] = $this->events_model->get_current_event(); 
     $data['recruit_id'] =  $this->session->userdata('user_id');
+    $data['invite_url'] = "http://7thgoswami.com/account?url=" .  $this->session->userdata('user_id');
     $this->loadView('teams_form', $data);
      
                                 
