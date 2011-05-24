@@ -55,7 +55,6 @@ class Teams extends CI_Controller
     echo ($this->membership_model->get_user_num_team_members($this->session->userdata('user_id')));
   }
 
-  
   function get_team_leader_ajax()
   {
     echo ($this->membership_model->get_user_recruiter_name($this->session->userdata('user_id')));
