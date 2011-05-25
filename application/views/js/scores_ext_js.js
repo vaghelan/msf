@@ -305,7 +305,7 @@
         selModel: new Ext.grid.RowSelectionModel({singleSelect:false}) ,
          tbar: [
          {
-         text: 'Add book score',
+         text: 'Report Book Score',
 	       tooltip: 'Great Tooltip',
          iconCls:'add',    // this is defined in our styles.css
          handler: displayFormWindow
