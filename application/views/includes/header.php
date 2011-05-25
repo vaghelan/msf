@@ -35,12 +35,14 @@
 Rank_ID My Score By Event  Team Score By Event  My Total Score  Team Total Score 
 -->
 	<ul class="dbord_info">
-			<li class="username"><?php echo $userdata->name ?>
-			<div id="rank"></div> 
+			<li class="username">
+			   <?php echo $userdata->name ?></br>
+         	   <div class="teamleader_box">My lead: <div id="teamleader"></div></div>
+			   <div id="rank"></div> 
 		</li>
         <li><h2 id="myscore_eventid">...</h2><em>My book score</em> </li> 
 	    <li><h2 id="teamscore_eventid"> ...</h2><em>My team score</em> </li>
-	    <li><h2 id="teammembers_eventid"> ...</h2><em>Total team members</em> </li>
+	    <li><h2 id="teammembers_eventid"> ...</h2><em>My team</em> </li>
 <!--	    <li><h2 id="teamleader"> ...</h2><em>My Team Leader</em> </li> -->
 	    
 		<div class="invite_more"><?php echo anchor('teams', 'Invite more friends'); ?></div>

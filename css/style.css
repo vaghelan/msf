@@ -144,7 +144,7 @@ text-shadow: #333 0px 1px 0px;
 display: block;
 height: 33px;
 width: 182px;
-margin-top: 10px;
+margin-top: 16px;
 text-indent: -10000px;
 position: absolute;
 background-repeat: no-repeat;
@@ -185,7 +185,10 @@ height: 200px !important;
 #teams-form {
 width: 100% !important;
 }
-
+#team p {
+	color: #333 !important;
+	line-height: 1.4em;
+}
 .x-window-plain, .x-panel-btns-ct, . x-panel-bwrap .x-panel-body-noheader{
 width: 420px !important;
 }
@@ -205,11 +208,20 @@ display: block;
 height: 126px;
 }
 .dashboard h1 {
-font-size: 20px;
+font-size: 14px;
 color: #e99208;
 text-shadow: #111 0px 1px 0px;
 }
 
+.teamleader_box {
+	font-size: 0.7em;
+	display: block;
+	width: 230px;
+	overflow-x: hidden;
+	white-space: nowrap;
+	color: #ccc;
+}
+.teamleader_box div {display: inline;}
 
 ul.dbord_info {
 margin-top: 20px;
@@ -224,9 +236,10 @@ margin-right: 20px;
 li.username {
 font-size: 1.1em;
 width: 240px;
+margin-top: -10px;
 height: 50px;
 border-right: 1px solid #fff;
-margin-right: 40px !important;
+margin-right: 30px !important;
 
 }
 	ul.dbord_info li h2 {
@@ -306,40 +319,105 @@ padding: 0px 20px;
 	.wrapper h2 {
 		color: #0e9bfd;
 		text-shadow: #fff 0px 1px 0px;
-		font-size: 1.1em;
+		font-size: 1.3em;
 		margin: 16px 0px 5px 0px;
 	}
 	.wrapper p {
 		color: #333 !important;
 		font-size: 0.9em;
-		margin-bottom: 10px;
+		margin: 15px 0px 20px 0px !important;
+		}
+		#team  label {
+		position: absolute;
+		color: #333;
+		font-size: 0.9em;
+		}
+		
+		#team .b_btn {
+			margin-top: 10px;
+			float: right;
 		}
 .wrapper textarea {
 	padding: 4px;
 	font-size: 0.9em;
 	color: #757575;
+	margin-top: 20px;
 }
-.wrapper textarea:focus, .wrapper input:focus {
+
+.wrapper h3, .facebook, .more_url   {
+	color: #575757;
+	font-size: 1.1em;
+	font-weight: bold;
+	margin-bottom: 10px;
+	text-shadow: #fff 0px 1px 0px;
+}
+.more_url input {
 background: #CDEB8B;
+padding: 5px 10px;
+border: 1px solid #eee;
+width: 275px;
+font-size: 14px;
+}
+.more_url input:focus {
+border: 1px solid #ccc;
+}
+
+.more_url {
+font-size: 1em !important;
+float: right;
+}
+
+.wrapper hr{
+color: #fff;
+margin: 0px 0px 30px 0px;
+}
+
+.wrapper textarea:focus, .wrapper input:focus {
+background: #ededed;
 color: #333;
 }
-.x-grid3-row-selected > * {background: #CDEB8B !important;}
+.invite_options {
+display: block;
+margin: 10px 0px 15px 0px;
+}
 
+.ivite_box {
+display: block;
+background: #C3D9FF;
+padding: 20px;
+position: relative;
+border: 1px solid #ccc;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+}
 #email_list {
-width: 30% !important;
+width: 230px !important;
+height: 100px;
 }
 
 #message {
-width: 65% !important;
+width: 610px !important;
+height: 100px;
 }
 
-.b_btn {
-/*
-height: 60px;
-font-size: 1.4em;
-float: right;
-*/
+
+.facebook {
+display: block;
+background: #CDEB8B url(http://static.ak.facebook.com/images/share/facebook_share_icon.gif?6:26981) no-repeat 5px center;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+padding: 6px 6px 6px 25px;
+width: 180px;
+color: #333;
+text-decoration: none;
+float: left;
 }
+.facebook:hover {
+	background-color: #4096EE;
+	color: #fff;
+	text-shadow: #757575 0px 1px 0px;
+}
+.x-grid3-row-selected > * {background: #CDEB8B !important;}
 
 /* FIX */
 .qa {
@@ -348,7 +426,6 @@ display:none;
 .x-tool-close, #ext-gen162 {
 display: none !important;
 }
-
 /* 
 ================
 END CORE CSS 
@@ -551,3 +628,10 @@ h1 {
 
 */
 
+	.ver {
+	text-align: center;
+	color: #757577;
+	display: block;
+	font-size: 10px;
+	padding-top: 20px;
+	}

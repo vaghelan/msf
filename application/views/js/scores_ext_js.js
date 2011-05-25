@@ -16,7 +16,7 @@
   {      
      Ext.MessageBox.show({
        msg: 'Saving the score, please wait...',
-       wait:true,
+       wait:true
    });     
     Ext.Ajax.request({   
     waitMsg: 'Please wait...',
@@ -93,7 +93,7 @@
      {
       Ext.MessageBox.show({
        msg: 'Adding the score, please wait...',
-       wait:true,
+       wait:true
       });  
       Ext.Ajax.request({   
         waitMsg: 'Please wait...',
@@ -146,7 +146,7 @@
          var encoded_array = Ext.encode(prez);
         Ext.MessageBox.show({
           msg: 'Deleting the score, please wait...',
-          wait:true,
+          wait:true
          });  
          Ext.Ajax.request({  
             waitMsg: 'Please Wait',

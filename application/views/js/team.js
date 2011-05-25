@@ -51,9 +51,9 @@
         switch(result){
         case 1:  // Success : simply reload
           
-          Ext.MessageBox.alert('Result', 'Your frieds invited!!');
-          document.getElementById("email_list").value="";
-          document.getElementById("message").value="";
+          Ext.MessageBox.alert('Result', 'Your friends invited!!');
+          document.getElementById("email_list").value="Type a list of invitee email addresses...";
+          document.getElementById("message").value="Enter your message...";
           break;
         default:
           Ext.MessageBox.alert('Warning','Your friends could not be invited');

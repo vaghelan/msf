@@ -66,7 +66,7 @@ Your Username: " . $username .
 "<br>Your Password: " . $pwd . 
 
 "<p>Please change your password using Profile page after you login.</p>" .
-"<p>In case of any technical difficulties contact, send email to admin@7thgoswami.com </p>" .
+"<p>In case of any technical difficulties send email to admin@7thgoswami.com </p>" .
 "</h4><p>We look forward to assisting you and we will send you updates.</p>
 
 

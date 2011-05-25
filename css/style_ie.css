@@ -12,8 +12,7 @@ background: url(http://7thgoswami.com/wp-content/themes/platformpro_NEW/images/b
 
 #login_form, #signup_form  {
  	width: 420px;
-    left: 25%;
-    position: absolute;
+    margin-left: 25% !important;
   }
   .h_wrap {
 	background: url(../img/dashboard.png) no-repeat top center;
@@ -40,8 +39,8 @@ height: 106px;
 display: block;
 height: 33px;
 width: 182px;
-margin-top: 30px;
-left: 160px;
+margin-top: 10px;
+left: 155px;
 text-indent: -10000px;
 position: absolute;
 background-repeat: no-repeat;
@@ -59,4 +58,36 @@ height: 90px;
 .invite_more a {
 
 top:50px;
+}
+
+.facebook {
+
+width: 185px;
+}
+
+.wrapper h3, .facebook  {
+	color: #575757;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	text-shadow: #fff 0px 1px 0px;
+}
+
+.admin {
+	color: #4096EE;
+	font-size: 90%;
+	display: block;
+	margin-left: 20px;
+	margin-top: 5px;
+	
+	}
+.m_form {
+	margin-left: 28%;
+	}
+	
+.more_url input {
+
+height: 28px;
+line-height: 16px;
+
 }
