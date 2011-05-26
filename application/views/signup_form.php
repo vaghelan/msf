@@ -1,6 +1,45 @@
 <div id="content"><div id="signup_form">
 <div class="img_sign"></div>
 
+<script type="text/javascript">
+function validateRegistrationForm()
+{
+
+var x1=document.forms["reg_form"]["password"].value;
+var x2=document.forms["reg_form"]["password2"].value;
+
+if (x1 != x2)
+  {
+  Ext.MessageBox.alert('Error', 'Password do not match!!');  
+  return false;
+  }
+
+
+x1=document.forms["reg_form"]["email_address"].value;
+x2=document.forms["reg_form"]["email_address_1"].value;
+
+if (x1 != x2)
+  {
+  Ext.MessageBox.alert('Error', 'Emails do not match!!');  
+  return false;
+  }
+  
+  var atpos=x1.indexOf("@");
+  var dotpos=x1.lastIndexOf(".");
+  if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x1.length)
+  {
+    Ext.MessageBox.alert('Error:', "Not a valid e-mail address: " + x1);
+    return false;
+  }  
+
+
+
+
+  
+}
+</script>
+
+
 	<h1>Registration</h1>
 			<?php 
 			if (isset($username) && $username != "")
@@ -12,7 +51,7 @@
 			?> 
 			 
 
-			<form accept-charset="utf-8" method="post" action="<?php echo base_url();?>index.php/login/create_member"><br><br><h5>Login name:</h5>
+			<form name="reg_form" accept-charset="utf-8" method="post" action="<?php echo base_url();?>index.php/login/create_member" onsubmit="return validateRegistrationForm()"><br><br><h5>Login name:</h5>
 
 			<?php 
 			if (isset($error_message))
@@ -72,6 +111,17 @@
 			 
 			 ><br><br>
 			 
+			<h5>Email Address Confirmation</h5>
+			<input 
+			type="text"
+			 value="Email Address" 
+			 name="email_address_1"
+  	    	onblur="if(value=='') value = 'Email Address Confirm'" 
+	    	onfocus="if(value=='Email Address Confirm') value = ''"
+			 
+			 ><br><br>
+			 
+			 
 			 <input 
 			 type="submit" 
 			 value="Register" 
@@ -85,3 +135,7 @@
 <span class="ver">&reg 2011 copyright ISV Silicon Valley. Book Management System <?php echo APP_VERSION; ?></span>
 
 </div>
+
+<script type="text/javascript" src="<?php echo base_url();?>extjs/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>extjs/ext-all.js"></script>
+

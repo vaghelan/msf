@@ -52,6 +52,14 @@
     {
       var xmlhttp;
       
+      var x = document.getElementById("name").value;
+      
+      if (x == "")
+      {
+         Ext.MessageBox.alert('Error', 'Name can not be empty');
+         return;
+      }
+      
       if (window.XMLHttpRequest)
         {// code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp=new XMLHttpRequest();
