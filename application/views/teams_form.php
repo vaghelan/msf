@@ -21,7 +21,7 @@
 		<textarea cols="30" rows="3" value="" name="email_list" id="email_list">Type a list of invitee email addresses...</textarea>
 
  		<label for="message">Personalize your invitation:</label>  		
-   		<textarea cols="55" rows="3"  name="message" type="text" id="message" value="Invite">Enter your message...</textarea>
+   		<textarea cols="55" rows="3"  name="message" type="text" id="message" value="Invite">Enter your message</textarea>
 		<button class="b_btn" type="button" onclick="SendInvite()">Send invites</button>
 </div>
 
