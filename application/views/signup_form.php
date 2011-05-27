@@ -130,7 +130,7 @@ if (x1 != x2)
 <a class="admin m_form" href="mailto:admin@7thgoswami.com?subject=7thgoswami Application
 &body=HARI BOL! Please describe your issue">Technical Support</a>
 
-<span class="ver">&reg 2011 copyright ISV Silicon Valley. Book Management System <?php echo APP_VERSION; ?></span>
+<span class="ver">&reg 2011 copyright ISV Silicon Valley. Sankirtan Book Distribution Management System <?php echo APP_VERSION; ?></span>
 
 </div>
 
