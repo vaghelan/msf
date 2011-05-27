@@ -351,14 +351,13 @@ padding: 0px 20px;
 	margin-bottom: 10px;
 	text-shadow: #fff 0px 1px 0px;
 }
-.more_url input {
+.more_url span {
 background: #CDEB8B;
 padding: 5px 10px;
 border: 1px solid #eee;
-width: 275px;
 font-size: 14px;
 }
-.more_url input:focus {
+.more_url span:hover {
 border: 1px solid #ccc;
 }
 
@@ -470,7 +469,7 @@ color: #ccc;
 	padding: 3px;
 	font-size: 130%;
    -moz-border-radius: 3px;
-   color: #03B7FF;
+   color: #144b9d;
 }
 #login_form a, #signup_form a {
 margin-left: 50px;

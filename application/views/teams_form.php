@@ -28,7 +28,7 @@
 
 <div class="invite_options fix">		
 
-	<div class="more_url">or send this link to friends: <input id="url_text" name="url_text" title="url_text" value="<?php echo $invite_url; ?>" name="url_text"></div>
+	<div class="more_url">or send this link to friends: <span><?php echo $invite_url; ?></span></div>
 	<a class="facebook" target="_blank" onclick="window.open (this.href, 'child', 'height=400,width=520'); return false" title="Share on Facebook" href="http://www.facebook.com/sharer.php?u=<?php echo $invite_url; ?>&t=Bhaktivinod Thakur International Festival of 1,008 Book Distributors">Invite by Facebook</a>
 
 </div>

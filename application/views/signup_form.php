@@ -110,17 +110,15 @@ if (x1 != x2)
 	    	onfocus="if(value=='Email Address') value = ''"
 			 
 			 ><br><br>
-			 
 			<h5>Email Address Confirmation</h5>
 			<input 
 			type="text"
 			 value="Email Address" 
 			 name="email_address_1"
-  	    	onblur="if(value=='') value = 'Email Address Confirm'" 
-	    	onfocus="if(value=='Email Address Confirm') value = ''"
+  	    	onblur="if(value=='') value = 'Email Address'" 
+	    	onfocus="if(value=='Email Address') value = ''"
 			 
-			 ><br><br>
-			 
+			 ><br><br>			 
 			 
 			 <input 
 			 type="submit" 
