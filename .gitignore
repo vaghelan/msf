@@ -1,0 +1,5 @@
+logs/
+p.sh
+c.sh
+application/config/database.php
+error_log
