@@ -184,7 +184,7 @@ Your Username: " . $username .
 "<BR>
 <BR>
 With gratitude,<BR>
-Vaisesika Dasa
+Tech Support 
 <BR>
 
 </body>
