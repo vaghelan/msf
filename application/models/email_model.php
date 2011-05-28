@@ -140,6 +140,77 @@ The Vedas not only direct us to our highest prospect in life, but they also show
    
   
   }
+
+  function send_reset_password_email($to, $name, $username, $pwd)
+  {
+   $this->email_init();
+   
+   $this->email->from('info@7thgoswami.com', 'Seventh Goswami');
+   $this->email->to($to);
+   $this->email->subject('Account credentials reset');
+   // $msg = 'Welcome ' . $name . ' ' . 'to 7thGoswami.com.';
+   // $msg = $msg . 'Your username is ' . $username . '. Your password is ' . $pwd;
+   
+   $msg = "<html> <head>
+      
+<style>
+h4 {
+display: block;
+padding: 10px;
+margin: 10px;
+background: #CDEB8B;
+border: 1px solid #73880A;
+font-size: 16px;
+}
+p {margin: 10px 0px 10px 0px;}
+</style>
+   
+   </head> <body> 
+<img src=\"http://7thgoswami.com/images/header.jpg\"/></br>
+
+
+<p>Hare krishna, " . $name. "!" . "</p>" .
+
+"<p>Your password has been successfully reset</p>
+
+
+<h4>
+Your Username: " . $username .
+"<br>Your Password: " . $pwd . 
+
+"<p>Please change your password using Profile page after you login.</p>" .
+"<p>In case of any technical difficulties send email to admin@7thgoswami.com </p>" .
+"</h4><p>We look forward to assisting you and we will send you updates.</p>" .
+"<BR>
+<BR>
+With gratitude,<BR>
+Vaisesika Dasa
+<BR>
+
+</body>
+</html>
+";
+   
+   $this->email->message($msg);
+
+   if (!$this->email->send())
+   {
+     log_message('debug', "Could not send signup email to  " . $to . " " . $name . " ". $username);
+     log_message('debug', $this->email->print_debugger());
+     return 0;
+   }  
+   else
+   {
+     log_message('debug', "Successfully Sent signup email to  " . $to . " " . $name . " ". $username);
+     return 1;
+   }  
+
+   
+  
+  }  
+  
+  
+  
   function email_init()
   {
     $config['protocol'] = 'sendmail';

@@ -29,7 +29,7 @@
     <br><br><input type="submit" value="Sign in" name="submit">
     
     <a href="<?php echo base_url();?>index.php/login/signup/<?php echo $rid ?>">Register</a></form>    
-    
+    <a href="<?php echo base_url();?>index.php/login/load_forgot_password">Forgot Password</a></form>
     
 	</div><!-- end login_form-->
 

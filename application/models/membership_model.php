@@ -244,6 +244,31 @@ class Membership_model extends CI_Model {
 		
 		return true;
   }
+
+
+  function reset_password($username, $email_address)
+  {
+
+    $this->db->where('email_address', $email_address);
+    $this->db->where('username', $username);
+		$query = $this->db->get('users');
+		
+    if($query->num_rows >= 1)
+		{
+		 foreach ($query->result() as $row)
+		 {
+		   $new_password = $this->generate_password();
+       $this->update_member_password($row->id, $new_password);
+       log_message('debug', "password = " . $new_password . " query = " . $this->db->last_query());
+       $this->email_model->send_reset_password_email($email_address, $row->name, $username, $new_password);
+     }
+     return 1;        
+		}
+
+		return 0;
+  }
+
+
  
   function create_member($recruit_id)
 	{

@@ -221,6 +221,25 @@ class Login extends CI_Controller
 	  return TRUE;    
 	}
 	
+	function forgot_password()
+	{
+     $r = $this->membership_model->reset_password($this->input->post('username'), $this->input->post('email_address'));
+     if ($r == 0)
+     {
+       $data['error_message'] = "Error: Account not found for the given username and email address";
+     }
+     else
+     {         
+       $data['error_message'] = "Account password is reset. Check your email.";
+     } 
+     $this->load->view('forgot_password_form', $data);  
+  }
+  
+  function load_forgot_password()
+  {
+    $this->load->view('forgot_password_form', ""); 
+  }
+	
 	function logout()
 	{
 	  $uid = $this->session->userdata('user_id'); 	  
