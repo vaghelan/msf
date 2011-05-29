@@ -2,8 +2,14 @@
 <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
         <title>Scores Report!</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		<script src="http://colorpowered.com/colorbox/core/colorbox/jquery.colorbox.js"></script> 
         <link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>extjs/resources/css/ext-all.css"/>  
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>extjs/resources/css/ext-all.css"/> 
+                <link rel="stylesheet" type="text/css" href="http://colorpowered.com/colorbox/core/example1/colorbox.css "/> 
+
+        
+        
          <!--[if IE]>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/style_ie.css" />
 <![endif]-->

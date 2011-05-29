@@ -10,7 +10,7 @@ margin: 0px;
 background: url(http://7thgoswami.com/wp-content/themes/platformpro_NEW/images/bg_tt.jpg) repeat -300px 0px;
 }
 
-#login_form, #signup_form  {
+.form_  {
  	width: 420px;
     margin-left: 25% !important;
   }

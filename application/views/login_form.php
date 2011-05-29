@@ -1,6 +1,15 @@
+	<script>
+		$(document).ready(function(){
+			//Examples of how to assign the ColorBox event to elements
+			$(".iframe_pop_up").colorbox({width:"460px;", height:"430px", iframe:true});
+			});
+	
+		</script>
+
+
 <div id="content">
 
-<div id="login_form">
+<div id="login_form" class="form_">
 	<div class="img_sign"></div>
     	<h1>Sign in</h1>
 	    <br><br>
@@ -28,9 +37,8 @@
     >
     <br><br><input type="submit" value="Sign in" name="submit">
     
-    <a href="<?php echo base_url();?>index.php/login/signup/<?php echo $rid ?>">Register</a></form>    
-    <a href="<?php echo base_url();?>index.php/login/load_forgot_password">Forgot Password</a></form>
-    
+    <a class="reg_log_tbn" href="<?php echo base_url();?>index.php/login/signup/<?php echo $rid ?>">Register</a></form>    
+    <a class="restore iframe_pop_up"  href="<?php echo base_url();?>index.php/login/load_forgot_password">Forgot password</a></form>
 	</div><!-- end login_form-->
 
 <div class="clear"></div>

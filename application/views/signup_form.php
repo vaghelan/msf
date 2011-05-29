@@ -1,4 +1,4 @@
-<div id="content"><div id="signup_form">
+<div id="content"><div id="signup_form" class="form_">
 <div class="img_sign"></div>
 
 <script type="text/javascript">
@@ -125,7 +125,7 @@ if (x1 != x2)
 			 value="Register" 
 			 name="submit">
 			 
-			 <a href="<?php echo base_url();?>index.php/login">Sign in</a>
+			 <a class="reg_log_tbn" href="<?php echo base_url();?>index.php/login">Sign in</a>
 </form></div>
 <a class="admin m_form" href="mailto:admin@7thgoswami.com?subject=7thgoswami Application
 &body=HARI BOL! Please describe your issue">Technical Support</a>

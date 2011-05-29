@@ -3,6 +3,7 @@
         <title>Scores Report!</title>
         <link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" media="screen" />
 
+
 </head>
 <body>
 
@@ -30,8 +31,9 @@ var x1=document.forms["forgot_pwd_form"]["email_address"].value;
 }
 </script>
 
-<div id="forgot_pwd_form">
 
+<div id="forgot_pwd_form" class="form_r">
+<h2>Restore password</h2>
 			<form name="forgot_pwd_form" accept-charset="utf-8" method="post" action="<?php echo base_url();?>index.php/login/forgot_password" onsubmit="return validateForgotPasswordForm()">
       
 
@@ -48,7 +50,7 @@ var x1=document.forms["forgot_pwd_form"]["email_address"].value;
 			}                 
 			?> 		 
 
-      <h5>User Name</h5>
+      <h5>Login name</h5>
       <input 
 			type="text" 
 			value="Login Name" 
@@ -72,10 +74,10 @@ var x1=document.forms["forgot_pwd_form"]["email_address"].value;
 			 value="Reset Password" 
 			 name="submit">	
 			 
+<a class="reg_log_tbn" href="<?php echo base_url();?>index.php/login">Sign in</a>
 
 </form>
 
-<a href="<?php echo base_url();?>index.php/login">Sign in</a>
 
 </div>
 

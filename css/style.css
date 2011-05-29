@@ -433,7 +433,7 @@ END CORE CSS
 /* CLEARFIX -- fixes clearing issue for floated elements */
 	.fix:after{content:".";display:block;height:0;clear:both;visibility:hidden;} .fix{display:inline-block;} * html .fix{height:1%;} .fix{display:block;}
 
-#login_form, #signup_form  {
+.form_ {
         width: 340px;
         border: 1px solid white;
  /*        margin: 250px auto; */
@@ -446,6 +446,24 @@ END CORE CSS
 		display: block;
 		color: #fff;
 } 
+
+	.form_r .error{
+	
+	padding: 10px !important;
+	margin: 0px !important;
+	}
+
+		.form_r {
+        border: 1px solid white;
+ /*        margin: 250px auto; */
+        padding: 0em 2em 2em 2em;
+        -moz-border-radius: 7px;
+		margin: 0px auto !important;
+		background: url(../img/bg_login.png) center 20% no-repeat;
+		display: block;
+		color: #fff;
+			}
+
 .img_sign {
 float: left;
 background: url(http://7thgoswami.com/wp-content/uploads/2011/04/bt-banner1.png) no-repeat left center;
@@ -455,30 +473,40 @@ width: 60px;
 border: 1px solid #ccc;
 margin-right: 14px;
 }
-#login_form h1, #signup_form h1 {
+.form_ h1, .form_ h1, .form_r h1 {
 color: #FF7400 !important;
 font-size: 2.2em;
 text-shadow: #222 0px 1px 0px;
 }
-#signup_form p{
+.form_ p{
 font-size: 0.9em;
 color: #ccc;
 }
-#login_form input, #signup_form input{
+.form_ input, .form_ input, .form_r input{
 	line-height: 24px;
 	padding: 3px;
 	font-size: 130%;
    -moz-border-radius: 3px;
    color: #144b9d;
 }
-#login_form a, #signup_form a {
-margin-left: 50px;
+a.reg_log_tbn {
+margin-left: 80px;
 color: #fff !important;
 font-size: 1.1em;
 }
 
-#login_form input[type="submit"], #signup_form input[type="submit"] {
+a.restore {
+display: block;
+color: #fff !important;
+font-size: 0.9em;
+margin-top: 10px;
+}
 
+.form_r h5 {
+margin-bottom: 5px;
+}
+
+.form_ input[type="submit"] {
 		color: #fff;
         padding: 2px 5px;
         border: 2px solid;
@@ -489,7 +517,7 @@ font-size: 1.1em;
         height: 36px;
 }
 
-#login_form input[type="submit"]:active, #signup_form input[type="submit"]:active {
+.form_ input[type="submit"]:active, .form_ input[type="submit"]:active {
 	color: #222;
 	border-color: #7bf #7bf #07c #07c;
 }
@@ -634,3 +662,5 @@ h1 {
 	font-size: 10px;
 	padding-top: 20px;
 	}
+	
+	
