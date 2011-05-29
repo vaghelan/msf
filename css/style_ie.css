@@ -14,6 +14,18 @@ background: url(http://7thgoswami.com/wp-content/themes/platformpro_NEW/images/b
  	width: 420px;
     margin-left: 25% !important;
   }
+
+.form_ h1 {
+
+margin-bottom: 0px !important;
+}
+
+#cboxClose {
+	background-image: none !important;
+	text-indent: -25px !important;
+}
+
+
   .h_wrap {
 	background: url(../img/dashboard.png) no-repeat top center;
 	padding: 20px 20px 0px 20px;

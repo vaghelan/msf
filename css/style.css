@@ -434,7 +434,8 @@ END CORE CSS
 	.fix:after{content:".";display:block;height:0;clear:both;visibility:hidden;} .fix{display:inline-block;} * html .fix{height:1%;} .fix{display:block;}
 
 .form_ {
-        width: 340px;
+		overflow: hidden;
+        width: 360px;
         border: 1px solid white;
  /*        margin: 250px auto; */
  		margin-left: 25%;
@@ -463,6 +464,10 @@ END CORE CSS
 		display: block;
 		color: #fff;
 			}
+
+#cboxContent {
+overflow: hidden;
+}
 
 .img_sign {
 float: left;

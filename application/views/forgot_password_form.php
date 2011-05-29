@@ -41,7 +41,7 @@ var x1=document.forms["forgot_pwd_form"]["email_address"].value;
 			if (isset($error_message))
 			{ 
 			?>
-			<br><p class="error"><?php echo $error_message ?></p><br>
+			<p class="error"><?php echo $error_message ?></p>
 			<?php  
 			}   
 			else
@@ -57,7 +57,7 @@ var x1=document.forms["forgot_pwd_form"]["email_address"].value;
 			name="username"
     	    onblur="if(value=='') value = 'Login Name'" 
     	    onfocus="if(value=='Login Name') value = ''"
-			><br><br>
+			><br>
 
   		<h5>Email Address</h5>
 			<input 
@@ -71,11 +71,9 @@ var x1=document.forms["forgot_pwd_form"]["email_address"].value;
 	    	
 	    <input 
 			 type="submit" 
-			 value="Reset Password" 
+			 value="Reset" 
 			 name="submit">	
 			 
-<a class="reg_log_tbn" href="<?php echo base_url();?>index.php/login">Sign in</a>
-
 </form>
 
 
