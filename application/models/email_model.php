@@ -177,12 +177,12 @@ p {margin: 10px 0px 10px 0px;}
 <h4>
 Your Username: " . $username .
 "<br>Your Password: " . $pwd . 
+"<br> http://7thgoswami.com/account/?login" .
 
 "<p>Please change your password using Profile page after you login.</p>" .
 "<p>In case of any technical difficulties send email to admin@7thgoswami.com </p>" .
 "</h4><p>We look forward to assisting you and we will send you updates.</p>" .
 "<BR>
-<BR>
 With gratitude,<BR>
 Tech Support 
 <BR>

@@ -19,7 +19,7 @@ var x1=document.forms["forgot_pwd_form"]["email_address"].value;
   var dotpos=x1.lastIndexOf(".");
   if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x1.length)
   {
-    //Ext.MessageBox.alert('Error:', "Not a valid e-mail address: " + x1);
+    // Ext.MessageBox.alert('Error:', "Not a valid e-mail address: " + x1);
     alert('Error: Not a valid e-mail address: ' + x1);
     return false;
   }  
@@ -82,7 +82,6 @@ var x1=document.forms["forgot_pwd_form"]["email_address"].value;
 
 
 </div>
-
 
 </body>
 </html>
