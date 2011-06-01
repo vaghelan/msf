@@ -11,12 +11,9 @@
         
         
          <!--[if IE]>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/style_ie.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/style_ie9.css" />
 <![endif]-->
 
- <!--[if IE]>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/style_ie.css" />
-<![endif]-->
 
 <!--[if gte IE 9]>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/style_ie9.css" />
