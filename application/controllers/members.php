@@ -6,6 +6,7 @@ class Members extends CI_Controller
  function __construct()
  {
    parent::__construct();
+   $this->is_logged_in();
  }
  
   private function is_logged_in()
@@ -62,6 +63,20 @@ class Members extends CI_Controller
   function get_total_book_distributors_by_event()
   {
      echo $this->membership_model->get_total_book_distributors_by_event($this->session->userdata('user_id'), $this->session->userdata('current_event_id'));
+  }
+  
+  function print_user_records()
+  {
+    $user_recs = $this->membership_model->get_user_information_dump();
+    foreach ($user_recs as $row)
+    {
+      echo $row['name'];
+      echo ",";
+      echo $row['email_address'];
+      echo "<br>";
+    }
+  
+  
   }
 
 

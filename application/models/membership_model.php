@@ -169,6 +169,15 @@ class Membership_model extends CI_Model {
     return($q->num_rows);    
   }  
   
+  function get_user_information_dump()
+  {
+    $this->db->select('name, email_address');
+    $this->db->order_by('name'); 
+  	$query = $this->db->get('users');
+  	return($query->result_array());  
+  
+  }
+  
 
   
   function get_user_team_score($userid)
