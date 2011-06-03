@@ -67,7 +67,7 @@ class Members extends CI_Controller
   
   function print_user_records()
   {
-    $user_recs = $this->membership_model->get_user_information_dump();
+    $user_recs = $this->membership_model->get_user_information_dump_order_by_name();
     foreach ($user_recs as $row)
     {
       echo $row['name'];
@@ -76,6 +76,24 @@ class Members extends CI_Controller
       echo "<br>";
     }
   
+  
+  }
+
+ function print_user_records_table()
+  {
+    $user_recs = $this->membership_model->get_user_information_dump_orderby_score();
+    echo "<table> <tr> <th> Name </th> <th> email_address </th> <th> books_distributed </th> </tr>";
+    foreach ($user_recs as $row)
+    {
+      echo "<tr>";                             
+      
+      echo "<td>" . $row['name'] . "</td>";
+      echo "<td>" . $row['email_address'] . "</td>";
+      echo "<td>" . $row['my_score'] . "</td>";
+      
+      echo "</tr>";
+    }
+    echo "</table>"; 
   
   }
 
