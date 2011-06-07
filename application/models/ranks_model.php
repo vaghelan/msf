@@ -121,37 +121,41 @@ class Ranks_model extends CI_Model {
     if ($rank == $this->isMasterTeamBuilder())
     {
       log_message('debug', "Already Master Team Builder");
-      return ;
+      return 0;
     }  
  
     if ($this->satisfiesProspectiveMerchantCriteria($score))
     {
         $this->promote_user_to_prospective_merchant($userid);
         log_message('debug', "Promote to Perspective merchant");
-        return; // as prospective merchant can nit be further promoted
+        return 1; // as prospective merchant can nit be further promoted
     }      
       
     if ($this->satisfiesMerchantCriteria($score)) 
     {
         $this->promote_user_to_merchant($userid);
         log_message('debug', "Promote to Merchant");
+        return 1;
     }
     else
-        return;        
+        return 0;        
     
     if ($this->satisfiesTeamBuilderCriteria($userid))
     {
         $this->promote_user_to_team_builder($userid);
         log_message('debug', "Promote to Team Builder");
+        return 1;
     }
     else
-       return;    
+       return 0;    
 
     if ($this->satisfiesMasterTeamBuilderCriteria($userid))
     {
         $this->promote_user_to_master_team_builder($userid);
         log_message('debug', "Promote to Master Team Builder");
+        return 1;
     }    
+    return 0;
   
   }
 

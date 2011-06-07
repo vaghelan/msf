@@ -244,6 +244,8 @@ class Scores_model extends CI_Model {
     {
          $num_team_members++;
          log_message('debug', "team member id = " . $id);
+         echo "team member id = " . $id . "<br>";
+         
          $ret = $this->update_children_by_id($id);
          $my_team_score = $ret[0]; 
        // This is to get all members under the tree  
@@ -271,6 +273,7 @@ class Scores_model extends CI_Model {
     $team_score = $ret[0];
     $num_team_members = $ret[1];
     log_message('debug', "team score = " . $team_score); 
+    
     $this->membership_model->update_member_team_score(0, $team_score);  
     $personal_score  =  $this->get_total_books_distributed_by_user(0);
     $this->membership_model->update_member_my_score(0, $personal_score);
@@ -282,12 +285,15 @@ class Scores_model extends CI_Model {
   function update_parent($userid, $score_change)
   {
     $recruiter_id = $this->membership_model->get_user_recruiter_id($userid);
-    $this->membership_model->update_member_team_score_by_change($recruiter_id, $score_change);
-    $this->ranks_model->update_rank($recruiter_id, $this->get_total_books_distributed_by_user($recruiter_id));
-    if ($recruiter_id == 0)
+    if ($score_change != 0)
+    {
+       $this->membership_model->update_member_team_score_by_change($recruiter_id, $score_change);
+    }
+    $parent_score = $this->get_total_books_distributed_by_user($recruiter_id);
+    $rank_changed = $this->ranks_model->update_rank($recruiter_id, $parent_score);
+    if ($recruiter_id == 0 || $rank_changed == 0)
       return;
-    return ($this->update_parent($recruiter_id, $score_change));  
-  
+    return ($this->update_parent($recruiter_id, 0));   
   }
    
    

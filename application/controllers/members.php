@@ -65,6 +65,11 @@ class Members extends CI_Controller
      echo $this->membership_model->get_total_book_distributors_by_event($this->session->userdata('user_id'), $this->session->userdata('current_event_id'));
   }
   
+  function move_member($user_id_to_move, $user_id_new_parent)
+  {
+     echo $this->membership_model->move_member($user_id_to_move, $user_id_new_parent);  
+  }
+  
   function print_user_records()
   {
     $user_recs = $this->membership_model->get_user_information_dump_order_by_name();

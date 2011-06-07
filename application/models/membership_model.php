@@ -79,6 +79,21 @@ class Membership_model extends CI_Model {
     return $q->row();  
   }
   
+  function validate_user_id($userid)
+  {
+  	$this->db->where('id', $userid);
+		$q = $this->db->get('users');
+
+    if($q->num_rows == 0)
+		{
+			return false;
+		}
+		
+    return true;  
+  
+  
+  }
+  
   function get_user_address_by_id($userid)
 	{
 		$this->db->where('user_id', $userid);
@@ -498,6 +513,13 @@ class Membership_model extends CI_Model {
      log_message('debug', "query = " . $this->db->last_query());
   }
   
+  function update_member_recruiter_id($userid, $new_rid)
+  {
+     $data = array('recruiter_id' => $new_rid);
+     $this->db->where('id', $userid);
+     $this->db->update('users', $data);    
+  }
+  
   
   function update_member_team_score($userid, $score)
   {
@@ -516,6 +538,21 @@ class Membership_model extends CI_Model {
      log_message('debug', "query = " . $this->db->last_query());
      
      $data = array('my_score' => $score);
+     $this->db->where('id', $userid);
+     $this->db->update('users', $data);  
+     log_message('debug', "query = " . $this->db->last_query());
+  }
+  
+  function update_member_my_team_members_by_change($userid, $num_change)
+  {
+     $num = $this->get_num_team_members($userid);
+     log_message('debug', "num old team members = " . $num);
+     
+     $num = $num + $num_change;
+     log_message('debug', "new num tam members = " . $num);
+     log_message('debug', "query = " . $this->db->last_query());
+     
+     $data = array('my_team_members' => $num);
      $this->db->where('id', $userid);
      $this->db->update('users', $data);  
      log_message('debug', "query = " . $this->db->last_query());
@@ -679,6 +716,49 @@ class Membership_model extends CI_Model {
     // done!
     return $password;
 
+  }
+  
+  function move_member($userid, $to)
+  {
+    $parent_id = $this->get_user_recruiter_id($userid);
+    if ($parent_id == -1)
+    {
+      echo "ID " . $userid . " is in valid" . "<br>";
+      return;
+    }
+    
+    echo "Current Parent ID = " . $parent_id . "<br>";
+    
+    if ($this->validate_user_id($to) == 0)
+    {
+      echo "Parent ID " . $to . " is in valid" . "<br>";
+      return;                 
+    }
+    
+    $personal_score = $this->get_user_my_score($userid);
+
+    // update rank for the old parent 
+    $this->update_member_my_team_members_by_change($parent_id, -1);
+    $this->scores_model->update_parent($userid, -1*$personal_score);
+    
+    // move member
+    $this->update_member_recruiter_id($userid, $to);
+        
+    // update rank for a new parent
+    $this->update_member_my_team_members_by_change($to, 1);
+    $this->scores_model->update_parent($userid, $personal_score);
+
+    $parent_id = $this->get_user_recruiter_id($userid);
+    if ($parent_id == -1)
+    {
+      echo "ID " . $userid . " is in valid" . "<br>";
+      return;
+    }
+    
+    echo "New Parent ID = " . $parent_id . "<br>";
+
+    
+  
   }
 
 
