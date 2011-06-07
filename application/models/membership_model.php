@@ -651,6 +651,13 @@ class Membership_model extends CI_Model {
      return ($result1 && $result2);             
               
   }
+
+  function delete_user($userid)
+  {
+      $this->db->where('id', $userid);	
+      $q =  $this->db->delete('users');	
+      log_message('debug', "query = " . $this->db->last_query());
+  }
   
   
   function get_current_rank_id($userid)
@@ -761,7 +768,38 @@ class Membership_model extends CI_Model {
   
   }
 
+  function delete_member($userid)
+  {
+   if ($this->validate_user_id($userid) == 0)
+   {
+      echo "User ID " . $userid . " is in valid not found in the database" . "<br>";
+      return;                 
+   }
 
+    $parent_id = $this->get_user_recruiter_id($userid);
+    if ($parent_id == -1)
+    {
+      echo "ID " . $userid . " is in valid" . "<br>";
+      return;
+    }
+
+    if ($this->get_num_team_members($userid) > 0)
+    {
+      echo "You can not delete this user as he has some team members. First move those members to other parent <br>";
+      return;
+
+    }
+    $personal_score = $this->get_user_my_score($userid);
+
+    // update rank for a new parent
+    $this->update_member_my_team_members_by_change($parent_id, -1);
+    if ($personal_score)
+       $this->scores_model->update_parent($userid, -1*$personal_score);
+
+    $this->delete_user($userid);
+    echo "User ID ". $userid . " Deleted successully";
+   
+  }
   	
 }
 	
