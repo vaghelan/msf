@@ -545,7 +545,7 @@ class Membership_model extends CI_Model {
   
   function update_member_my_team_members_by_change($userid, $num_change)
   {
-     $num = $this->get_num_team_members($userid);
+     $num = $this->get_user_num_team_members($userid);
      log_message('debug', "num old team members = " . $num);
      
      $num = $num + $num_change;
