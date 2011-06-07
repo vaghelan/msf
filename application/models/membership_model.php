@@ -147,18 +147,16 @@ class Membership_model extends CI_Model {
 
   function get_total_num_users()
   {
-		$q = $this->db->get('users');
-
-    return($q->num_rows);
+  	$this->db->from('users');
+  	return ($this->db->count_all_results());
   }
 
   function get_total_book_distributors_all()
   {
   
   	$this->db->where('rank_id > 0');
-  	$q = $this->db->get('users');
-    //echo $this->db->last_query();
-    return($q->num_rows);
+  	$this->db->from('users');
+  	return ($this->db->count_all_results());
   }
 
   function get_total_registered_today()
@@ -167,10 +165,8 @@ class Membership_model extends CI_Model {
   	$today = date('Y-m-d H:i:s', mktime(0, 0, 0, date("m")  , date("d"), date("Y")));
 
   	$this->db->where('timestamp_registered >= ' . "'" . $today . "'");
-  	$q = $this->db->get('users');
-  	//echo $this->db->last_query();
-
-    return($q->num_rows);
+  	$this->db->from('users');
+  	return ($this->db->count_all_results());
   }
   
   function get_total_registered_last_week()
@@ -179,9 +175,8 @@ class Membership_model extends CI_Model {
     $from = date('Y-m-d H:i:s', mktime(0, 0, 0, date("m")  , date("d") - 7, date("Y")));
 
    	$this->db->where('timestamp_registered >= ' . "'" . $from . "'" . ' and timestamp_registered <= '. "'" . $to . "'");
-  	$q = $this->db->get('users');
-  	//echo $this->db->last_query();
-    return($q->num_rows);    
+  	$this->db->from('users');
+  	return ($this->db->count_all_results());
   }  
   
   function get_user_information_dump_orderby_score()
