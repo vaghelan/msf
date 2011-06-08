@@ -259,6 +259,7 @@
             //valueField: 'ID',
             typeAhead: true,
             mode: 'remote',
+            editable: false,
             triggerAction: 'all',
             selectOnFocus:true})
         },
@@ -341,6 +342,7 @@
      emptyText: 'Select a book...',
      displayField: 'BookName',
      allowBlank: false,
+     editable: false,
      //hiddenName: 'AddFormBookField',
      //valueField: 'id',
      anchor:'95%',
