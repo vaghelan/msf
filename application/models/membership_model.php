@@ -177,6 +177,14 @@ class Membership_model extends CI_Model {
    	$this->db->where('timestamp_registered >= ' . "'" . $from . "'" . ' and timestamp_registered <= '. "'" . $to . "'");
   	$this->db->from('users');
   	return ($this->db->count_all_results());
+  }
+  
+  function get_total_books_distributed()
+  {
+    $this->db->select_sum('my_score', 'total_score'); 
+  	$query = $this->db->get('users');
+  	$row = $query->row();
+  	return ($row->total_score);   
   }  
   
   function get_user_information_dump_orderby_score()

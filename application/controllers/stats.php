@@ -24,6 +24,11 @@ class Stats extends CI_Controller
      echo $this->membership_model->get_total_book_distributors_all();
   }
 
+   function get_total_books_distributed()
+  {
+     echo $this->membership_model->get_total_books_distributed();
+  }
+
 
 }	
 	
