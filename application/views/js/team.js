@@ -93,7 +93,7 @@
           {name: 'Name', type: 'string', mapping: 'name'},
           {name: 'Email', type: 'string', mapping: 'email_address'},
           {name: 'MyCount', type: 'int', mapping: 'my_count'},
-          {name: 'TotalCount', type: 'int', mapping: 'total_count'},
+          {name: 'TeamScore', type: 'int', mapping: 'team_score'},
           {name: 'TotalTeamMembers', type: 'int', mapping: 'total_members'}
           
         ]),
@@ -118,15 +118,15 @@
           readOnly: true
   		  },   
   		  {
-          header: 'Books Distributed (Current Event)',
+          header: 'Books Distributed',
           dataIndex: 'MyCount',
           width: 100,
           hidden: false,
           readOnly: true
   		  },
         {
-          header: 'Total Books Distributed',
-          dataIndex: 'TotalCount',
+          header: 'Team Score',
+          dataIndex: 'TeamScore',
           width: 100,
           hidden: false,
           readOnly: true

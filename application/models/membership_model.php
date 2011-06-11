@@ -392,7 +392,7 @@ class Membership_model extends CI_Model {
 			return '({"total":"0", "results":""})';
 		}
 		$total_rows =   $q->num_rows;
-	  $this->db->select('id, name, email_address, my_score AS my_count, my_team_score AS total_count, my_team_members AS total_members');
+	  $this->db->select('id, name, email_address, my_score AS my_count, my_team_score AS team_score, my_team_members AS total_members');
     $this->db->where('recruiter_id', $userid);
     $this->db->where('id !=' , $userid);
 		
@@ -749,6 +749,7 @@ class Membership_model extends CI_Model {
 
     // update rank for the old parent 
     $this->update_member_my_team_members_by_change($parent_id, -1);
+    // reduce parent's team score and update his rank...recursive
     $this->scores_model->update_parent($userid, -1*$personal_score);
     
     // move member

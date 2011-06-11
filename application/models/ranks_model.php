@@ -115,50 +115,79 @@ class Ranks_model extends CI_Model {
   
   function update_rank($userid, $score)
   {
-    log_message('debug', "updating rank for " .  $userid . " " . $score );
     $rank =  $this->membership_model->get_current_rank_id($userid);
     
-    if ($rank == $this->isMasterTeamBuilder())
-    {
-      log_message('debug', "Already Master Team Builder");
-      return 0;
-    }  
- 
-    if ($this->satisfiesProspectiveMerchantCriteria($score))
-    {
-        $this->promote_user_to_prospective_merchant($userid);
-        log_message('debug', "Promote to Perspective merchant");
-        return 1; // as prospective merchant can nit be further promoted
-    }      
       
-    if ($this->satisfiesMerchantCriteria($score)) 
+    if (! $this->satisfiesMerchantCriteria($score)) 
     {
-        $this->promote_user_to_merchant($userid);
-        log_message('debug', "Promote to Merchant");
-        return 1;
-    }
-    else
-        return 0;        
+        // was he prospective merchant
+        if ($rank != $this->isProspectiveMerchant()) 
+        {
+          // he was not prospective merchant so demote
+           $this->promote_user_to_prospective_merchant($userid);
+           log_message('debug', "updating rank for " .  $userid . " " . $score );
+           log_message('debug', "Promote to Perspective merchant");
+           return 1;
+        }
+        return 0;  // he is already prospective merchant
+    }        
+    // he is atleast merchant...  let us see
     
-    if ($this->satisfiesTeamBuilderCriteria($userid))
+    if (! $this->satisfiesTeamBuilderCriteria($userid))
     {
-        $this->promote_user_to_team_builder($userid);
-        log_message('debug', "Promote to Team Builder");
-        return 1;
+        // was he merchant ?
+        if ($rank != $this->isMerchant())  
+        {
+            // He was not merchant so promote
+           $this->promote_user_to_merchant($userid);
+           log_message('debug', "updating rank for " .  $userid . " " . $score );
+           log_message('debug', "Promote to Merchant");
+           return 1;
+        }
+        return 0;  //he is already mechant
+    
+    
+    }   
+    // he is atleast Team Builder ... let us see
+    
+    
+    
+    if (! $this->satisfiesMasterTeamBuilderCriteria($userid))
+    {
+        // was he team builder
+        if ($rank != $this->isTeamBuilder()) 
+        
+        {
+           // He was not team builder so promote
+           $this->promote_user_to_team_builder($userid);
+           log_message('debug', "updating rank for " .  $userid . " " . $score );
+
+           log_message('debug', "Promote to Team Builder");
+           return 1;
+        }
+        // he is already team builder
+        return 0; 
+    
+    
     }
-    else
-       return 0;    
+  // he is  master builder
+  //  was he already master team builder
+  if ($rank != $this->isMasterTeamBuilder()) 
+  {
+   // He was not Master Team builder so promote
+   $this->promote_user_to_master_team_builder($userid);
+   log_message('debug', "updating rank for " .  $userid . " " . $score );
 
-    if ($this->satisfiesMasterTeamBuilderCriteria($userid))
-    {
-        $this->promote_user_to_master_team_builder($userid);
-        log_message('debug', "Promote to Master Team Builder");
-        return 1;
-    }    
-    return 0;
-  
+   log_message('debug', "Promote to Master Team Builder");
+   return 1;        
+ 
   }
+  return 0; // he is already master builder
+
+
+  }
+}  
 
 
 
-}
+?>
