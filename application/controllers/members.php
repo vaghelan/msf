@@ -146,6 +146,11 @@ class Members extends CI_Controller
   
   }
 
+  function save_subscribe_ajax()
+  {
+    $this->users_data_model->update_field($this->session->userdata('user_id'), 6, $this->input->post('q_subscribe'));
+    echo "Email Subscription setting saved";    
+  }
 
 
 	

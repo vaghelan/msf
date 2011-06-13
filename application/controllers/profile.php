@@ -29,7 +29,9 @@ class Profile extends CI_Controller
 	function index()
 	{
 	  $data['userdata'] = $this->membership_model->get_user_details_by_id($this->session->userdata('user_id'));
-    $data['addrinfo'] = $this->membership_model->get_user_address_by_id($this->session->userdata('user_id'));   
+    $data['addrinfo'] = $this->membership_model->get_user_address_by_id($this->session->userdata('user_id'));
+    $data['subscribe_info'] = $this->users_data_model->get_subscribe_option_by_id($this->session->userdata('user_id'));   
+    $data['sub_prompt'] = $this->users_data_model->get_subscribe_prompt();
     $data['current_event'] = $this->events_model->get_current_event(); 
     $data['rank'] = $this->ranks_model->get_current_rank_description($this->session->userdata('user_id'));
     $this->loadView('profile_form', $data);    

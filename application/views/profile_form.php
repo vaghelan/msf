@@ -52,6 +52,10 @@
 			</select>
 			<button type="button" onclick="SaveAnswers()">Change</button>
 		</div>
+		
+		<p> <?php echo $sub_prompt ?> </p>
+		<input type="checkbox" name="q_subscribe" value="1" <?php if ($subscribe_info) echo "checked=\"yes\"" ?> >  
+		<button type="button" onclick="SaveSubscribe()"  >Save</button><br>
 
 </div>
 

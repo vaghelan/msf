@@ -38,7 +38,6 @@ class Membership_model extends CI_Model {
 		$this->db->where('id', $userid);
 		$query = $this->db->get('users');
 		
-		
 		if($query->num_rows == 1)
 		{
 		  $user = $query->row();
