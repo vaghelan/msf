@@ -65,86 +65,8 @@ class Members extends CI_Controller
      // echo $this->membership_model->get_total_book_distributors_by_event($this->session->userdata('user_id'), $this->session->userdata('current_event_id'));
   }
   
-  function is_admin_user($userid)
-  {
-    return ($userid == 177 || $userid == 1);
   
-  }
-  
-  function move_member($user_id_to_move, $user_id_new_parent)
-  {
-     if (! $this->is_admin_user($this->session->userdata('user_id') ) )
-     {
-       echo "Permission Denied. <br>";
-       return;
-     }
 
-     $this->membership_model->move_member($user_id_to_move, $user_id_new_parent);  
-  }
-  
-  function delete_member($userid)
-  {
-  
-     if (! $this->is_admin_user($this->session->userdata('user_id') ) )
-     {
-       echo "Permission Denied. <br>";
-       return;
-     }
-     
-     if ( $this->session->userdata('user_id') == $userid)
-     {
-       echo "Permission Denied. You can not delete your own id.<br>";
-       return;
-     }
-
-  
-     $this->membership_model->delete_member($userid);  
-  }
-
-  
-  function print_user_records()
-  {
-    $user_recs = $this->membership_model->get_user_information_dump_order_by_name();
-    foreach ($user_recs as $row)
-    {
-      echo $row['name'];
-      echo ",";
-      echo $row['email_address'];
-      echo "<br>";
-    }
-  
-  
-  }
-
- function print_user_records_table()
-  {
-    $user_recs = $this->membership_model->get_user_information_dump_orderby_score();
-    echo "<table> <tr> <th> ID </th> <th> Name </th> <th> email_address </th> <th> books_distributed </th> </tr>";
-    foreach ($user_recs as $row)
-    {
-      echo "<tr>";                             
-      echo "<td>" . $row['id'] . "</td>";
-      echo "<td>" . $row['name'] . "</td>";
-      echo "<td>" . $row['email_address'] . "</td>";
-      echo "<td>" . $row['my_score'] . "</td>";
-      
-      echo "</tr>";
-    }
-    echo "</table>"; 
-  
-  }
-  
-  function help()
-  {
-    if (!$this->is_admin_user($this->session->userdata('user_id')))
-    {
-      echo "Permission denied <br>";
-      return;
-    }
-    $this->load->view('help_form');
-    
-  
-  }
 
   function save_subscribe_ajax()
   {

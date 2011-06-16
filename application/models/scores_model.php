@@ -9,6 +9,16 @@ class Scores_model extends CI_Model {
      return($q->result());     
    }
    
+   function update_parent_rank($user_id, $count)
+   {
+     $this->membership_model->update_member_my_score_by_change($user_id, $count);
+     
+     $this->ranks_model->update_rank($user_id, $this->get_total_books_distributed_by_user($user_id));
+     $this->update_parent($user_id, $count);
+     return;
+   
+   }
+   
    function add_score($event_id, $user_id, $book_id, $count, $bdate)
    {
      $data = array (
@@ -20,12 +30,7 @@ class Scores_model extends CI_Model {
      );
      $insert = $this->db->insert('scores', $data);
      log_message('debug', "query = " . $this->db->last_query());
-     
-     $this->membership_model->update_member_my_score_by_change($user_id, $count);
-     
-     $this->ranks_model->update_rank($user_id, $this->get_total_books_distributed_by_user($user_id));
-     $this->update_parent($user_id, $count);
-     return($insert);
+     return($insert);      
    }
    
    function get_num_books_distributed_by_user($user_id, $event_id, $start, $limit)

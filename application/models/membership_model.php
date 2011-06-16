@@ -683,6 +683,13 @@ class Membership_model extends CI_Model {
   
   }
   
+  function is_admin_user($userid)
+  {
+    return ($userid == 177 || $userid == 1); 
+    //|| $userid == 283);
+  
+  }
+  
   function generate_password($length = 8)
   {
 
@@ -802,6 +809,38 @@ class Membership_model extends CI_Model {
     $this->delete_user($userid);
     echo "User ID ". $userid . " Deleted successully";
    
+  }
+  
+  function populate_cookie()
+  {
+    $this->db->select('id');  
+		$query = $this->db->get('users');
+		
+    if($query->num_rows >= 1)
+		{
+		 foreach ($query->result() as $row)
+		 {
+		   $cookie = $this->generate_password(32);
+       $add_cookie_array = array(
+  		  'field_id' => 7,
+  			'user_id' => $row->id,
+  			'value' => $cookie			
+  		  );
+  		  
+      $this->db->where('field_id', 7);	
+      $this->db->where('user_id', $row->id);
+      $q =  $this->db->delete('users_data');	
+  	  
+  		$insert = $this->db->insert('users_data', $add_cookie_array);
+      echo "$row->id " . "  " . $cookie . "<br>";		   
+  
+  	 }	  
+		
+             
+		}
+		return 1;
+  
+  
   }
   	
 }

@@ -132,6 +132,24 @@ class Users_Data_model extends CI_Model {
     {
       return $this->get_field_prompt(6);
     }
+    
+    function validate_cookie($userid, $cookie)
+    {
+      $cookie_db = $this->get_field_value($userid, 7);
+      
+      if ($cookie_db == -1)
+      {
+        return 0;
+      }
+      
+      if (strcmp($cookie_db, $cookie) == 0)
+      {
+        return 1;
+      }
+     
+       return 0; 
+    
+    }
 
 
 }

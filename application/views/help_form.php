@@ -2,23 +2,23 @@
 <br>
 <br>
 
-<?php echo base_url();?>index.php/members/print_user_records_table
+<?php echo base_url();?>index.php/admin/print_user_records_table
 <br>
 <br>
 <br>
 
 
-<?php echo base_url();?>index.php/scores/update_all
+<?php echo base_url();?>index.php/admin/update_all
 <br>
 <br>
 <br>
 
-<?php echo base_url();?>index.php/members/move_member/(ID)/(NEW_PARENT_ID)
+<?php echo base_url();?>index.php/admin/move_member/(ID)/(NEW_PARENT_ID)
 <br>
 <br>
 <br>
 
-<?php echo base_url();?>index.php/members/delete_member/(ID)
+<?php echo base_url();?>index.php/admin/delete_member/(ID)
 <br>
 <br>
 <br>
@@ -28,12 +28,12 @@
 <br>
 <br>
 <br>
-
-
 <?php echo base_url();?>index.php/stats/get_total_registered_last_week
 <br>
 <br>
 <br>
-
-
 <?php echo base_url();?>index.php/stats/get_total_book_distributors_all
+<br>
+<br>
+<br>
+<?php echo base_url();?>index.php/stats/get_total_books_distributed
