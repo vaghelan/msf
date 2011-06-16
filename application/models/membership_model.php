@@ -284,7 +284,8 @@ class Membership_model extends CI_Model {
   {
 
     $this->db->where('email_address', $email_address);
-    $this->db->where('username', $username);
+    if ($username != "")
+      $this->db->where('username', $username);
 		$query = $this->db->get('users');
 		
     if($query->num_rows >= 1)
@@ -293,10 +294,10 @@ class Membership_model extends CI_Model {
 		 {
 		   $new_password = $this->generate_password();
        $this->update_member_password($row->id, $new_password);
-       log_message('debug', "password = " . $new_password . " query = " . $this->db->last_query());
-       $this->email_model->send_reset_password_email($email_address, $row->name, $username, $new_password);
+       log_message('debug', "username = " . $username . "password = " . $new_password . " query = " . $this->db->last_query());
+       $this->email_model->send_reset_password_email($email_address, $row->name, $row->username, $new_password);
      }
-     return 1;        
+     return $query->num_rows;        
 		}
 
 		return 0;

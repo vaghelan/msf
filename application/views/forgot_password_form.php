@@ -50,22 +50,18 @@ var x1=document.forms["forgot_pwd_form"]["email_address"].value;
 			}                 
 			?> 		 
 
-      <h5>Login name</h5>
+      <h5>Login name (optional)</h5>
       <input 
 			type="text" 
-			value="Login Name" 
 			name="username"
-    	    onblur="if(value=='') value = 'Login Name'" 
-    	    onfocus="if(value=='Login Name') value = ''"
+    	                value = '' 
 			><br>
 
-  		<h5>Email Address</h5>
+  		<h5>* Email Address</h5>
 			<input 
 			type="text"
-			 value="Email Address" 
 			 name="email_address"
-  	    onblur="if(value=='') value = 'Email Address'" 
-	    	onfocus="if(value=='Email Address') value = ''"
+	    	         value = ''
 	    >	
 	    <br><br>	
 	    	

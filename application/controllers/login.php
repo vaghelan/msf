@@ -230,7 +230,11 @@ class Login extends CI_Controller
      }
      else
      {         
-       $data['error_message'] = "Account password is reset. Check your email.";
+       if ($r > 1)
+         $data['error_message'] = "Account password is reset for ". $r . " accounts registered on the same email. You will receive " . $r . " emails one for each account.";
+       else
+         $data['error_message'] = "Account password is reset. Check your email.";
+
      } 
      $this->load->view('forgot_password_form', $data);  
   }
