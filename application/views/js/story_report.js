@@ -3,6 +3,8 @@
       
       var subject = document.getElementById("subject").value; 
       var story = document.getElementById("post_mail").value;
+      var name = document.getElementById("name").value;
+      var location = document.getElementById("location").value;
       var args;
       
       if (window.XMLHttpRequest)
@@ -26,6 +28,8 @@
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
    
       args = "subject=" + subject;
+      args = args + "name=" + name;
+      args = args + "location=" + location;      
       args = args + "&story="  + story;
       
       

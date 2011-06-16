@@ -472,13 +472,13 @@ $name .
   
   }
   
-  function send_story_post_email($name, $subject, $story)
+  function send_story_post_email($name, $location, $subject, $story)
   {
   
    $this->email->from('info@7thgoswami.com', $name);
    $this->email->to('post@7thgoswami.com');
    $this->email->subject($subject);
-   $msg = "Author: <author>" . $name .  "</author> Location: San Jose, CA, USA \n";
+   $msg = "Author: <author>" . $name .  "</author>      Location: " . $location . "<br>";
    $msg = $msg . $story;
    
    

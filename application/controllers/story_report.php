@@ -42,9 +42,8 @@ class Story_Report extends CI_Controller
     
     
     $user_info = $this->membership_model->get_user_details_by_id($this->session->userdata('user_id'));   
-  
-    $this->email_model->send_story_post_email($user_info->name, $this->input->post('subject'), $this->input->post('story'));
-     echo "Your Story Posted!!";   
+    $this->email_model->send_story_post_email($this->input->post('name'), $this->input->post('location'), $this->input->post('subject'), $this->input->post('story'));
+    echo "Your Story Posted!!";   
   
   }
   
