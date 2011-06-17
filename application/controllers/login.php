@@ -69,7 +69,7 @@ class Login extends CI_Controller
     if($result != "") // if the user's credentials validated...
 		{
 			$data = array(
-				'username' => $this->input->post('username'),
+				'username' => strtolower($this->input->post('username')),
 				'is_logged_in' => true,
 				'user_id' => $result,
 				'current_event_id' =>  $this->events_model->get_current_event_id(),

@@ -4,7 +4,7 @@ class Membership_model extends CI_Model {
 
 	function validate()
 	{
-		$this->db->where('username', $this->input->post('username'));
+		$this->db->where('username', strtolower($this->input->post('username')));
 		$this->db->where('password', md5($this->input->post('password')));
 		$query = $this->db->get('users');
 		
@@ -19,7 +19,7 @@ class Membership_model extends CI_Model {
 	
 	function get_user_details_by_name($username)
 	{
-		$this->db->where('username', $username);
+		$this->db->where('username', strtolower($username));
 		$q = $this->db->get('users');
 
     if($q->num_rows == 0)
@@ -252,7 +252,7 @@ class Membership_model extends CI_Model {
   {
   	// If username already exists or email address already exists
 	
-		$this->db->where('username', $username);
+		$this->db->where('username', c($username));
 		$query = $this->db->get('users');
 		
 		
@@ -285,7 +285,7 @@ class Membership_model extends CI_Model {
 
     $this->db->where('email_address', $email_address);
     if ($username != "")
-      $this->db->where('username', $username);
+      $this->db->where('username', strtolower($username));
 		$query = $this->db->get('users');
 		
     if($query->num_rows >= 1)
@@ -311,7 +311,7 @@ class Membership_model extends CI_Model {
 		  'recruiter_id' => $this->input->post('recruit_id'),
 			'name' => $this->input->post('name'),
 			'email_address' => $this->input->post('email_address'),			
-			'username' => $this->input->post('username'),
+			'username' => strtolower($this->input->post('username')),
 			'password' => md5($this->input->post('password')),
       'ip_address'=> 	ip2long($this->input->ip_address()),
       'timestamp_registered' => 'now()'			
