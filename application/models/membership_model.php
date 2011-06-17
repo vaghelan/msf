@@ -252,7 +252,7 @@ class Membership_model extends CI_Model {
   {
   	// If username already exists or email address already exists
 	
-		$this->db->where('username', c($username));
+		$this->db->where('username', strtolower($username));
 		$query = $this->db->get('users');
 		
 		

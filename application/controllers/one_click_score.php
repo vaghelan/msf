@@ -25,6 +25,11 @@ class One_Click_Score extends CI_Controller
     echo "scores updated successfully"; 
   
   }
+  
+  function send_one_click_report_button()
+  {
+  
+  }
 
 
 }
