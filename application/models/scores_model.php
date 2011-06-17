@@ -9,12 +9,31 @@ class Scores_model extends CI_Model {
      return($q->result());     
    }
    
-   function update_parent_rank($user_id, $count)
+   function update_stats($user_id, $count)
    {
-     $this->membership_model->update_member_my_score_by_change($user_id, $count);
+     // Update My Score if Non zero + or -
+     if ($count != 0)
+       $this->membership_model->update_member_my_score_by_change($user_id, $count);
      
-     $this->ranks_model->update_rank($user_id, $this->get_total_books_distributed_by_user($user_id));
-     $this->update_parent($user_id, $count);
+     // Update MY Rank
+     $changed = $this->ranks_model->update_rank($user_id, $this->get_total_books_distributed_by_user($user_id));
+
+    if ($user_id == 0) // No Parent
+      return;
+    // Get user's parent ID
+    $recruiter_id = $this->membership_model->get_user_recruiter_id($user_id);
+    
+    if ($count != 0)
+    {
+       $this->membership_model->update_member_team_score_by_change($recruiter_id, $count);
+    }
+
+     if ($changed) // if My rank has changed then only My parent's rank can change
+     {
+       // Update Parent's team score and his rank 
+       $this->update_parent($recruiter_id);
+     }
+     
      return;
    
    }
@@ -30,6 +49,7 @@ class Scores_model extends CI_Model {
      );
      $insert = $this->db->insert('scores', $data);
      log_message('debug', "query = " . $this->db->last_query());
+     $this->update_stats($user_id, $count);
      return($insert);      
    }
    
@@ -185,16 +205,16 @@ class Scores_model extends CI_Model {
        $this->db->where('id', $sid);
        $result = $this->db->update('scores', $data);
        log_message('debug', "UPDATE result = " . $result);
+     
+   
+       $this->update_stats($user_id, $count - $old_score);
        
-       if ($count != $old_score)
-          $this->membership_model->update_member_my_score_by_change($user_id, $count - $old_score);
+     //  if ($count != $old_score)
+       //   $this->membership_model->update_member_my_score_by_change($user_id, $count - $old_score);
 
-       $this->ranks_model->update_rank($user_id, $this->get_total_books_distributed_by_user($user_id));
+      // $this->ranks_model->update_rank($user_id, $this->get_total_books_distributed_by_user($user_id));
        
-       if ($count != $old_score)
-       {
-         $this->update_parent($user_id, $count - $old_score);
-       }  
+      // $this->update_parent($user_id, $count - $old_score);
        
        return 1;
    }   
@@ -230,11 +250,13 @@ class Scores_model extends CI_Model {
       $this->db->delete('scores');
       log_message('debug', "scores deleted");
       
-      $this->membership_model->update_member_my_score_by_change($user_id, (-1)*$score);
+      $this->update_stats($user_id, (-1)*$score);
       
-      $this->ranks_model->update_rank($user_id, $this->get_total_books_distributed_by_user($user_id));
-      log_message('debug', "rank updated for user id " . $user_id);   
-      $this->update_parent($user_id, (-1)*$score);    
+      //$this->membership_model->update_member_my_score_by_change($user_id, (-1)*$score);
+      
+      //$this->ranks_model->update_rank($user_id, $this->get_total_books_distributed_by_user($user_id));
+      //log_message('debug', "rank updated for user id " . $user_id);   
+     // $this->update_parent($user_id, (-1)*$score);    
     }
     return 1;
   
@@ -287,18 +309,19 @@ class Scores_model extends CI_Model {
   
   }
   
-  function update_parent($userid, $score_change)
+  function update_parent($userid)
   {
-    $recruiter_id = $this->membership_model->get_user_recruiter_id($userid);
-    if ($score_change != 0)
-    {
-       $this->membership_model->update_member_team_score_by_change($recruiter_id, $score_change);
-    }
-    $parent_score = $this->get_total_books_distributed_by_user($recruiter_id);
-    $rank_changed = $this->ranks_model->update_rank($recruiter_id, $parent_score);
-    if ($recruiter_id == 0 || $rank_changed == 0)
+    $rank_changed = $this->ranks_model->update_rank($userid, $this->get_total_books_distributed_by_user($userid));
+
+    if ($rank_changed == 0 || $userid == 0) 
+    // If Rank did not change OR No more parents then end the update
       return;
-    return ($this->update_parent($recruiter_id, 0));   
+ 
+     // This means that rank has changed and user is not 0 so he has some leader
+     
+    $recruiter_id = $this->membership_model->get_user_recruiter_id($userid);
+
+    return ($this->update_parent($recruiter_id));   
   }
    
    
