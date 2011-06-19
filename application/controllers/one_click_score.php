@@ -20,16 +20,8 @@ class One_Click_Score extends CI_Controller
     $bid = $this->books_model->get_book_id('Other');
     
    // $this->add_score($cid, $userid, $bid, $this->input->post('count'), $tday)); 
-    $num = $this->scores_model->get_total_books_distributed_by_user_and_eventid($userid, $cid);
-    
-    if ($num == 0)
-    {
-      $this->scores_model->add_score($cid, $userid, $bid, $count, $tday);
-      echo "You are counted";
-    }
-    else
-      echo "You are already counted"; 
-  
+    $data['num'] = $this->scores_model->get_total_books_distributed_by_user_and_eventid($userid, $cid);
+    $this->load->view('one_click_report_view', $data);
   }
   
   function send_one_click_report_button()
