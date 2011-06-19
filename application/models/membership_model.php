@@ -189,7 +189,10 @@ class Membership_model extends CI_Model {
   function get_user_information_dump_orderby_score()
   {
     $this->db->select('*');
-    $this->db->order_by('my_score', 'desc'); 
+    $this->db->order_by('my_score', 'desc');
+    $this->db->join('users_data', 'users_data.user_id = users.id');
+    $this->db->where('users_data.field_id = 7'); 
+ 
   	$query = $this->db->get('users');
   	return($query->result_array());  
   
@@ -319,6 +322,22 @@ class Membership_model extends CI_Model {
 		
 		$insert = $this->db->insert('users', $new_member_insert_data);
 		$this->update_member_my_team_members($recruit_id);
+		return $insert;
+	}
+	
+	function create_member_load($rid, $name, $email, $username, $pwd)
+	{
+    	$new_member_insert_data = array(
+		  'recruiter_id' => $rid,
+			'name' => $name,
+			'email_address' => $email,			
+			'username' => strtolower($username),
+			'password' => md5($pwd),
+      'timestamp_registered' => 'now()'			
+		);
+		
+		$insert = $this->db->insert('users', $new_member_insert_data);
+		$this->update_member_my_team_members($rid);
 		return $insert;
 	}
 	

@@ -75,20 +75,8 @@ class Admin extends CI_Controller
  function print_user_records_table()
   {
     
-    $user_recs = $this->membership_model->get_user_information_dump_orderby_score();
-    echo "<table> <tr> <th> ID </th> <th> Name </th> <th> email_address </th> <th> books_distributed </th> <th> username </th></tr>";
-    foreach ($user_recs as $row)
-    {
-      echo "<tr>";                             
-      echo "<td>" . $row['id'] . "</td>";
-      echo "<td>" . $row['name'] . "</td>";
-      echo "<td>" . $row['email_address'] . "</td>";
-      echo "<td>" . $row['my_score'] . "</td>";
-      echo "<td>" . $row['username'] . "</td>";
-      
-      echo "</tr>";
-    }
-    echo "</table>"; 
+    $data['user_recs'] = $this->membership_model->get_user_information_dump_orderby_score();
+    $this->load->view('admin_user_info', $data);
   
   }
   
