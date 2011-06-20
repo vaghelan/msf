@@ -705,7 +705,7 @@ class Membership_model extends CI_Model {
   
   function is_admin_user($userid)
   {
-    return ($userid == 177 || $userid == 1); 
+    return ($userid == 177 || $userid == 1 || $userid == 283); 
     //|| $userid == 283);
   
   }
