@@ -51,7 +51,7 @@ if (x1 != x2)
 			?> 
 			 
 
-			<form name="reg_form" accept-charset="utf-8" method="post" action="<?php echo base_url();?>index.php/login/create_member" onsubmit="return validateRegistrationForm()"><br><br><h5>Login name:</h5>
+			<form name="reg_form" accept-charset="utf-8" method="post" action="<?php echo base_url();?>index.php/login/create_member" onsubmit="return validateRegistrationForm()"><br><br><h5>Login:</h5>
 
 			<?php 
 			if (isset($error_message))
@@ -69,54 +69,42 @@ if (x1 != x2)
 			
 			<input 
 			type="text" 
-			value="Login Name" 
+			value="" 
 			name="username"
-    	    onblur="if(value=='') value = 'Login Name'" 
-    	    onfocus="if(value=='Login Name') value = ''"
 			><br><br><h5>Password</h5>
 			
 			<input 
 			type="password" 
-			value="Password" 
+			value="" 
 			name="password"
-  	    	onblur="if(value=='') value = 'Password'" 
-	    	onfocus="if(value=='Password') value = ''"
 			><br><br><h5>Password Confirm</h5>
 			
 			<input 
 			type="password" 
-			value="Password Confirm" 
+			value="" 
 			name="password2"
-  	    	onblur="if(value=='') value = 'Password Confirm'" 
-	    	onfocus="if(value=='Password Confirm') value = ''"
 			><br><br>
 			<?php echo form_hidden('recruit_id', $recruit_id); ?>
 <br>			
 			 
 			<h5>Full Name</h5>
 			<input type="text" 
-			value="Full Name" 
+			value="" 
 			name="name"
-  	    	onblur="if(value=='') value = 'Full Name'" 
-	    	onfocus="if(value=='Full Name') value = ''"
 			><br><br>
 			
 			<h5>Email Address</h5>
 			<input 
 			type="text"
-			 value="Email Address" 
+			 value="" 
 			 name="email_address"
-  	    	onblur="if(value=='') value = 'Email Address'" 
-	    	onfocus="if(value=='Email Address') value = ''"
 			 
 			 ><br><br>
 			<h5>Email Address Confirmation</h5>
 			<input 
 			type="text"
-			 value="Email Address" 
+			 value="" 
 			 name="email_address_1"
-  	    	onblur="if(value=='') value = 'Email Address'" 
-	    	onfocus="if(value=='Email Address') value = ''"
 			 
 			 ><br><br>			 
 			 
