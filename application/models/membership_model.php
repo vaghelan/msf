@@ -32,6 +32,24 @@ class Membership_model extends CI_Model {
 		}
   
   }
+  
+  function get_user_id_by_username($username)
+	{
+		$this->db->where('username', strtolower($username));
+		$q = $this->db->get('users');
+
+    if($q->num_rows == 0)
+		{
+			return array('');
+		}
+		
+		foreach ($q->result() as $row) {
+			    return $row->id;
+		}
+  
+  }
+
+  
   function get_user_name_by_id($userid)
   {
 
@@ -322,6 +340,8 @@ class Membership_model extends CI_Model {
 		
 		$insert = $this->db->insert('users', $new_member_insert_data);
 		$this->update_member_my_team_members($recruit_id);
+		$id = $this->get_user_id_by_username(strtolower($this->input->post('username')));
+		$this->add_cookie($id);
 		return $insert;
 	}
 	
@@ -338,6 +358,10 @@ class Membership_model extends CI_Model {
 		
 		$insert = $this->db->insert('users', $new_member_insert_data);
 		$this->update_member_my_team_members($rid);
+		
+		$id = $this->get_user_id_by_username(strtolower($this->input->post('name')));
+		$this->add_cookie($id);
+
 		return $insert;
 	}
 	
@@ -831,36 +855,50 @@ class Membership_model extends CI_Model {
    
   }
   
+  function add_cookie($userid)
+  {
+		   $cookie = $this->generate_password(32);
+       $add_cookie_array = array(
+  		  'field_id' => 7,
+  			'user_id' => $userid,
+  			'value' => $cookie			
+  		  );
+  		  
+      $this->db->where('field_id', 7);	
+      $this->db->where('user_id', $userid);
+  //    $q =  $this->db->delete('users_data');	
+  	  
+  		$insert = $this->db->insert('users_data', $add_cookie_array);
+		  return $cookie; 
+  
+  
+  
+  }
+  
   function populate_cookie()
   {
-    $this->db->select('id');  
+    $this->db->select('id');
+    $this->db->order_by('id asc');  
 		$query = $this->db->get('users');
+		
 		
     if($query->num_rows >= 1)
 		{
 		 foreach ($query->result() as $row)
 		 {
-		   $cookie = $this->generate_password(32);
-       $add_cookie_array = array(
-  		  'field_id' => 7,
-  			'user_id' => $row->id,
-  			'value' => $cookie			
-  		  );
-  		  
-      $this->db->where('field_id', 7);	
-      $this->db->where('user_id', $row->id);
-      $q =  $this->db->delete('users_data');	
-  	  
-  		$insert = $this->db->insert('users_data', $add_cookie_array);
-      echo "$row->id " . "  " . $cookie . "<br>";		   
+		   if (-1 != $this->users_data_model->get_field_value($row->id, 7))
+		   {
+		     echo "skipping id = " . $row->id . "<br>";
+		     continue;
+		   }
+      $cookie = $this->add_cookie($row->id);
+      echo "Populating id" . $row->id  . "  " . $cookie . "<br>";		   
   
   	 }	  
 		
              
 		}
 		return 1;
-  
-  
   }
   	
 }
