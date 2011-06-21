@@ -204,7 +204,7 @@ class Membership_model extends CI_Model {
   	return ($row->total_score);   
   }  
   
-  function get_user_information_dump_orderby_score()
+  function get_user_information_dump_orderby_score_old()
   {
     $this->db->select('*');
     $this->db->order_by('my_score', 'desc');
@@ -215,6 +215,39 @@ class Membership_model extends CI_Model {
   	return($query->result_array());  
   
   }
+
+  function get_user_information_dump_orderby_score()
+  {
+  	
+		//$sql = "select * from users where id in (select user_id from users_data where field_id = 6 and value = '1' INTERSECT select user_id from users_data where field_id = 7) order by my_score desc";
+    $this->db->select('*');
+    $this->db->order_by('my_score', 'desc');
+     
+		$q = $this->db->get('users');
+    
+    $arr = array();  	
+		
+  	foreach ($q->result() as $row)
+  	{
+  	  $temp = array();
+  	  $temp['id'] = $row->id;
+  	  $temp['email_address'] = $row->email_address;
+  	  $temp['username'] = $row->username;
+  	  $temp['name'] = $row->name;
+  	  $temp['my_score'] = $row->my_score;
+  	  
+      $temp['cookie'] = $this->users_data_model->get_field_value($row->id, 7);
+      
+      $temp['subscribe'] = $this->users_data_model->get_field_value($row->id, 6);
+      $arr[]  = $temp;
+
+    }
+  	
+  	return($arr);  
+  
+  }
+
+
 
   function get_user_information_dump_order_by_name()
   {
@@ -900,6 +933,9 @@ class Membership_model extends CI_Model {
 		}
 		return 1;
   }
+
+
+
   	
 }
 	

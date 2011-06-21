@@ -89,6 +89,11 @@ class Admin extends CI_Controller
   {
    $this->membership_model->populate_cookie();
   }
+  
+  function populate_subscribe_option()
+  {
+   $this->users_data_model->populate_subscribe_option();
+  }
 
 
 }

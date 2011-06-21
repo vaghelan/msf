@@ -150,6 +150,25 @@ class Users_Data_model extends CI_Model {
        return 0; 
     
     }
+    
+   function populate_subscribe_option()
+   {
+    $this->db->select('id');
+    $this->db->order_by('id asc');  
+		$query = $this->db->get('users');
+		
+		
+    if($query->num_rows >= 1)
+		{
+		 foreach ($query->result() as $row)
+		 {
+       $this->get_subscribe_option_by_id($row->id);		   
+     }	  
+		
+             
+		}
+		return 1;
+  }
 
 
 }
