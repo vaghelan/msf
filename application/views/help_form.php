@@ -23,7 +23,16 @@
 <br>
 <br>
 
+<?php echo base_url();?>index.php/admin/load_members
+<br>
+<br>
+<br>
 
+
+<?php echo base_url();?>index.php/stats/get_total_num_users
+<br>
+<br>
+<br>
 <?php echo base_url();?>index.php/stats/get_total_registered_today
 <br>
 <br>

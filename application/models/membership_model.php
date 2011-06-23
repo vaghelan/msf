@@ -2,10 +2,10 @@
 
 class Membership_model extends CI_Model {
 
-	function validate()
+	function validate($username, $password)
 	{
-		$this->db->where('username', strtolower($this->input->post('username')));
-		$this->db->where('password', md5($this->input->post('password')));
+		$this->db->where('username', $username);
+		$this->db->where('password', md5($password));
 		$query = $this->db->get('users');
 		
 		
@@ -14,12 +14,20 @@ class Membership_model extends CI_Model {
 		  $user = $query->row();
 			return $user->id;
 		}
-		return "";
+    
+		if($query->num_rows > 1)
+		{
+		  $message = "for user name there are more than one records " . $username;
+		  $this->email_model->send_email('vagehlan@yahoo.com', 'FATAL in the system from membershipt_model/validate()', $message);
+		  return -1;
+		}
+    return -2;
+      
 	}
 	
 	function get_user_details_by_name($username)
 	{
-		$this->db->where('username', strtolower($username));
+		$this->db->where('username', rtrim(ltrim(strtolower($username))));
 		$q = $this->db->get('users');
 
     if($q->num_rows == 0)
@@ -35,7 +43,7 @@ class Membership_model extends CI_Model {
   
   function get_user_id_by_username($username)
 	{
-		$this->db->where('username', strtolower($username));
+		$this->db->where('username', rtrim(ltrim(strtolower($username))));
 		$q = $this->db->get('users');
 
     if($q->num_rows == 0)
@@ -306,7 +314,7 @@ class Membership_model extends CI_Model {
   {
   	// If username already exists or email address already exists
 	
-		$this->db->where('username', strtolower($username));
+		$this->db->where('username', rtrim(ltrim(strtolower($username))));
 		$query = $this->db->get('users');
 		
 		
@@ -321,7 +329,7 @@ class Membership_model extends CI_Model {
   function is_unique_email($str)
   {
 
-    $this->db->where('email_address', $str);
+    $this->db->where('email_address', rtrim(ltrim($str)));
 		$query = $this->db->get('users');
 		
 		
@@ -339,7 +347,7 @@ class Membership_model extends CI_Model {
 
     $this->db->where('email_address', $email_address);
     if ($username != "")
-      $this->db->where('username', strtolower($username));
+      $this->db->where('username', rtrim(ltrim(strtolower($username))));
 		$query = $this->db->get('users');
 		
     if($query->num_rows >= 1)
@@ -361,11 +369,14 @@ class Membership_model extends CI_Model {
  
   function create_member($recruit_id)
 	{
+	    $username = rtrim(ltrim(strtolower($this->input->post('username'))));
+	    $email = ltrim(rtrim($this->input->post('email_address')));
+	    
     	$new_member_insert_data = array(
 		  'recruiter_id' => $this->input->post('recruit_id'),
 			'name' => $this->input->post('name'),
-			'email_address' => $this->input->post('email_address'),			
-			'username' => strtolower($this->input->post('username')),
+			'email_address' => $email,			
+			'username' => $username,
 			'password' => md5($this->input->post('password')),
       'ip_address'=> 	ip2long($this->input->ip_address()),
       'timestamp_registered' => 'now()'			
@@ -373,18 +384,19 @@ class Membership_model extends CI_Model {
 		
 		$insert = $this->db->insert('users', $new_member_insert_data);
 		$this->update_member_my_team_members($recruit_id);
-		$id = $this->get_user_id_by_username(strtolower($this->input->post('username')));
+		$id = $this->get_user_id_by_username($username);
 		$this->add_cookie($id);
 		return $insert;
 	}
 	
 	function create_member_load($rid, $name, $email, $username, $pwd)
 	{
+	    $username = rtrim(ltrim(strtolower($username)));
     	$new_member_insert_data = array(
 		  'recruiter_id' => $rid,
 			'name' => $name,
 			'email_address' => $email,			
-			'username' => strtolower($username),
+			'username' => $username,
 			'password' => md5($pwd),
       'timestamp_registered' => 'now()'			
 		);
@@ -392,7 +404,8 @@ class Membership_model extends CI_Model {
 		$insert = $this->db->insert('users', $new_member_insert_data);
 		$this->update_member_my_team_members($rid);
 		
-		$id = $this->get_user_id_by_username(strtolower($this->input->post('name')));
+		$id = $this->get_user_id_by_username($username);
+		echo "user id = " . $id . "<br>";
 		$this->add_cookie($id);
 
 		return $insert;
@@ -883,9 +896,16 @@ class Membership_model extends CI_Model {
     if ($personal_score)
        $this->scores_model->update_parent($userid, -1*$personal_score);
 
+    $this->delete_cookie($userid);
     $this->delete_user($userid);
     echo "User ID ". $userid . " Deleted successully";
    
+  }
+  
+  function delete_cookie($userid)
+  {
+      $this->users_data_model->delete_all_fields($userid);
+  
   }
   
   function add_cookie($userid)

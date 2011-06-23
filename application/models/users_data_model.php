@@ -115,6 +115,13 @@ class Users_Data_model extends CI_Model {
       $r = $this->db->delete('users_data');
       return $r;    
     }
+
+    function delete_all_fields($userid)
+    {
+      $this->db->where('user_id', $userid);
+      $r = $this->db->delete('users_data');
+      return $r;    
+    }
     
     function get_subscribe_option_by_id($userid)
     {

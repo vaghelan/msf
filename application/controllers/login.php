@@ -64,12 +64,15 @@ class Login extends CI_Controller
  
  function validate_credentials()
  {
-    $result = $this->membership_model->validate();
+ 		$username = strtolower(rtrim(ltrim($this->input->post('username'))));
+		$password = $this->input->post('password');
+ 
+    $result = $this->membership_model->validate($username, $password);
     
-    if($result != "") // if the user's credentials validated...
+    if($result >= 0 ) // if the user's credentials validated...
 		{
 			$data = array(
-				'username' => strtolower($this->input->post('username')),
+				'username' => $username,
 				'is_logged_in' => true,
 				'user_id' => $result,
 				'current_event_id' =>  $this->events_model->get_current_event_id(),
@@ -86,10 +89,8 @@ class Login extends CI_Controller
 			header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
 			redirect('scores');
 		}
-		else // incorrect username or password
+		else if ($result == -2) // incorrect username or password
 		{
-		  $username = $this->input->post('username');
-		  $password = $this->input->post('password');
 		  $data['error_message'] = "incorrect user name/password";
 		  if ($this->session->userdata('recruit_id') != "")
         $data['rid'] = $this->session->userdata('recruit_id');
@@ -98,6 +99,17 @@ class Login extends CI_Controller
 	    $this->loadView('login_form', $data);		
 	    header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
 		}
+		else if ($result == -1) // duplicate username
+		{
+		  $data['error_message'] = "duplicate user name. Please write to technical support";
+		  if ($this->session->userdata('recruit_id') != "")
+        $data['rid'] = $this->session->userdata('recruit_id');
+      else
+        $data['rid'] = 0;  
+	    $this->loadView('login_form', $data);		
+	    header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+		}
+		
     
  
  }

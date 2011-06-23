@@ -10,15 +10,15 @@ class Email_model extends CI_Model {
    //$this->email->cc('another@another-example.com');
    //$this->email->bcc('them@their-example.com');
 
-   $this->email->subject('Email Test');
-   $this->email->message('Testing the email class.');
+   $this->email->subject($subject);
+   $this->email->message($message);
 
    if (!$this->email->send())
    {
-     echo "could not send email";
+     log_message('debug', "could not send email to " . $to);
    }
    else
-     echo "Send email successful";
+     log_message('debug', "Sent email succssful " . $to);
    //echo $this->email->print_debugger();
   
   }
