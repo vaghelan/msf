@@ -224,12 +224,12 @@ class Membership_model extends CI_Model {
   
   }
 
-  function get_user_information_dump_orderby_score()
+  function get_user_information_dump_orderby_score($orderby)
   {
   	
 		//$sql = "select * from users where id in (select user_id from users_data where field_id = 6 and value = '1' INTERSECT select user_id from users_data where field_id = 7) order by my_score desc";
     $this->db->select('*');
-    $this->db->order_by('my_score', 'desc');
+    $this->db->order_by($orderby, 'asc');
      
 		$q = $this->db->get('users');
     
@@ -247,6 +247,8 @@ class Membership_model extends CI_Model {
       $temp['cookie'] = $this->users_data_model->get_field_value($row->id, 7);
       
       $temp['subscribe'] = $this->users_data_model->get_field_value($row->id, 6);
+      $temp['time_registered'] = $row->timestamp_registered;
+      $temp['last_logged_in'] = $row->last_logged_in; 
       $arr[]  = $temp;
 
     }
@@ -775,7 +777,7 @@ class Membership_model extends CI_Model {
   
   function is_admin_user($userid)
   {
-    return ($userid == 177 || $userid == 1 || $userid == 283); 
+    return ($userid == 177 || $userid == 1 || $userid == 283 || $userid == 3); 
     //|| $userid == 283);
   
   }
