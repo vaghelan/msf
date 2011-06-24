@@ -134,6 +134,26 @@ class Users_Data_model extends CI_Model {
       return $subscribe;
       
     }
+    function enable_subscribe_option($userid)
+    {
+      $value = $this->get_subscribe_option_by_id($userid);
+      if ($value == 0)
+      {
+        $this->update_field($userid, 6, 1);
+      }
+      
+    }
+    
+    function disable_subscribe_option($userid)
+    {
+      $value = $this->get_subscribe_option_by_id($userid);
+      if ($value == 1)
+      {
+        $this->update_field($userid, 6, 0);
+      }
+      
+    }
+
     
     function get_subscribe_prompt()
     {
@@ -157,6 +177,11 @@ class Users_Data_model extends CI_Model {
        return 0; 
     
     }
+   
+   function get_cookie($userid)
+   {
+     return($this->get_field_value($userid, 7));
+   } 
     
    function populate_subscribe_option()
    {

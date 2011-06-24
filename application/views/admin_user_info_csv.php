@@ -1,4 +1,4 @@
-ID, Name, email_address, books_distributed, username, Last_Logged_in , Time_Registered <br>
+ID, Name, email_address, books_distributed, username,   Last_Logged_in , Time_Registered <br>
 <?php
 
 foreach ($user_recs as $row)

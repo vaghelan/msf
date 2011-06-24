@@ -244,9 +244,9 @@ class Membership_model extends CI_Model {
   	  $temp['name'] = $row->name;
   	  $temp['my_score'] = $row->my_score;
   	  
-      $temp['cookie'] = $this->users_data_model->get_field_value($row->id, 7);
+      $temp['cookie'] = $this->users_data_model->get_cookie($row->id);
       
-      $temp['subscribe'] = $this->users_data_model->get_field_value($row->id, 6);
+      $temp['subscribe'] = $this->users_data_model->get_subscribe_option_by_id($row->id);
       $temp['time_registered'] = $row->timestamp_registered;
       $temp['last_logged_in'] = $row->last_logged_in; 
       $arr[]  = $temp;
@@ -388,6 +388,8 @@ class Membership_model extends CI_Model {
 		$this->update_member_my_team_members($recruit_id);
 		$id = $this->get_user_id_by_username($username);
 		$this->add_cookie($id);
+		// add subscribe option
+		$this->membership_model->enable_subscribe_option($id);
 		return $insert;
 	}
 	
