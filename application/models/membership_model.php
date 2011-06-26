@@ -389,7 +389,7 @@ class Membership_model extends CI_Model {
 		$id = $this->get_user_id_by_username($username);
 		$this->add_cookie($id);
 		// add subscribe option
-		$this->membership_model->enable_subscribe_option($id);
+		$this->users_data_model->enable_subscribe_option($id);
 		return $insert;
 	}
 	
