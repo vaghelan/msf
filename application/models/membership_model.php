@@ -908,7 +908,7 @@ class Membership_model extends CI_Model {
 
     $this->delete_cookie($userid);
     $this->delete_user($userid);
-    echo "User ID ". $userid . " Deleted successully";
+    echo "User ID ". $userid . " Deleted successully" . "<br>";
    
   }
   

@@ -57,6 +57,21 @@ class Admin extends CI_Controller
      $this->membership_model->delete_member($userid);  
   }
 
+  function delete_member_range($from, $to)
+  {
+    for ($i = $from; $i <= $to; $i++ )
+    { 
+     if ( $this->session->userdata('user_id') == $i)
+     {
+       echo "Permission Denied. You can not delete your own id.<br>";
+       continue;
+     }
+
+  
+     $this->membership_model->delete_member($i);
+    }  
+  }
+
   
   function print_user_records()
   {
@@ -116,7 +131,7 @@ class Admin extends CI_Controller
   function load_members()
   {
   
-  $fp = fopen('/home1/virtualt/public_html/nilesh/adult.csv','r') or die("can't open file");
+  $fp = fopen('/home1/virtualt/public_html/nilesh/xxx.csv','r') or die("can't open file");
 
 $count = 0;
 $num_columns = 0;
