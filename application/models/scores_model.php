@@ -239,6 +239,18 @@ class Scores_model extends CI_Model {
 	  return $r;
   }
   
+  function delete_score($user_id, $id, $score)
+  {
+    $this->db->where('id', $id);
+    $this->db->delete('scores');
+    log_message('debug', "scores deleted");
+    
+    $this->update_stats($user_id, (-1)*$score);
+      
+   }
+    
+  
+  
   function delete_scores($ids)
   {
     foreach ($ids as $id)
@@ -246,17 +258,8 @@ class Scores_model extends CI_Model {
       $row = $this->get_score_by_id($id);
       $score = $row->count;
       $user_id = $row->user_id;
-      $this->db->where('id', $id);
-      $this->db->delete('scores');
-      log_message('debug', "scores deleted");
-      
-      $this->update_stats($user_id, (-1)*$score);
-      
-      //$this->membership_model->update_member_my_score_by_change($user_id, (-1)*$score);
-      
-      //$this->ranks_model->update_rank($user_id, $this->get_total_books_distributed_by_user($user_id));
-      //log_message('debug', "rank updated for user id " . $user_id);   
-     // $this->update_parent($user_id, (-1)*$score);    
+    
+      $this->delete_score($user_id, $id, $score);
     }
     return 1;
   

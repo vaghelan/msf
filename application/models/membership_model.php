@@ -779,7 +779,13 @@ class Membership_model extends CI_Model {
   
   function is_admin_user($userid)
   {
-    return ($userid == 177 || $userid == 1 || $userid == 283 || $userid == 3); 
+    return ($userid == 177 || // nilesh 
+            $userid == 1 ||   // dimitriy
+            $userid == 283 || // rasheshwari
+            $userid == 3   || // damodar
+            $userid == 19   || //srddha devi dasi
+            $userid == 77   //malini devi dasi
+            ); 
     //|| $userid == 283);
   
   }

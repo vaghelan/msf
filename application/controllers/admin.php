@@ -112,10 +112,11 @@ class Admin extends CI_Controller
   }
   
   
+  
   function load_members()
   {
   
-  $fp = fopen('/home1/virtualt/public_html/nilesh/load.csv','r') or die("can't open file");
+  $fp = fopen('/home1/virtualt/public_html/nilesh/adult.csv','r') or die("can't open file");
 
 $count = 0;
 $num_columns = 0;
@@ -132,7 +133,8 @@ while($csv_line = fgetcsv($fp,1024)) {
        }   
           
        continue;
-    }
+    }                
+    
     echo '<br>';
     echo "processing record " . $count . "<br>";
     if (count($csv_line) != $num_columns)
@@ -165,7 +167,7 @@ while($csv_line = fgetcsv($fp,1024)) {
         echo "rid = " . $rid . " name = " . $name . " email = " . $email . " username = " . $username ."<br>";
         $this->membership_model->create_member_load($rid, $name, $email, $username, $pwd);
         $user_info = $this->membership_model->get_user_details_by_name($username);
-        echo "Imported " . $user_info->name . " " . $user_info->username . "<br>";
+        echo "Imported " .  $user_info->name . " " . $user_info->username . "<br>";
         // $this->email_model->send_signup_email($email, $name, $username, $pwd); 
         if ($num_books)
         {
