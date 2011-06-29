@@ -90,7 +90,7 @@ class Admin extends CI_Controller
  function print_user_records_table()
   {
     
-    $data['user_recs'] = $this->membership_model->get_user_information_dump_orderby_score('my_score');
+    $data['user_recs'] = $this->membership_model->get_user_information_dump_orderby_score('id');
     $this->load->view('admin_user_info', $data);
   
   }
@@ -109,7 +109,41 @@ class Admin extends CI_Controller
     $data['user_recs'] = $this->membership_model->get_user_information_dump_orderby_score('name');
     $this->load->view('admin_user_info', $data);
   
+  }
+  
+ function print_user_records_table_by_username()
+  {
+    
+    $data['user_recs'] = $this->membership_model->get_user_information_dump_orderby_score('username');
+    $this->load->view('admin_user_info', $data);
+  
   }  
+
+ function print_user_records_table_by_email()
+  {
+    
+    $data['user_recs'] = $this->membership_model->get_user_information_dump_orderby_score('email_address');
+    $this->load->view('admin_user_info', $data);
+  
+  }  
+
+ function print_user_records_table_by_id()
+  {
+    
+    $data['user_recs'] = $this->membership_model->get_user_information_dump_orderby_score('email_address');
+    $this->load->view('admin_user_info', $data);
+  
+  }  
+
+ function print_user_records_table_by_score()
+  {
+    
+    $data['user_recs'] = $this->membership_model->get_user_information_dump_orderby_score('my_score');
+    $this->load->view('admin_user_info', $data);
+  
+  }  
+  
+    
   
   function help()
   {
