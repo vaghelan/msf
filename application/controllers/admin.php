@@ -165,7 +165,7 @@ class Admin extends CI_Controller
   function load_members()
   {
   
-  $fp = fopen('/home1/virtualt/public_html/nilesh/pune.csv','r') or die("can't open file");
+  $fp = fopen('/home1/virtualt/public_html/nilesh/Mohanvel.csv','r') or die("can't open file");
 
 $count = 0;
 $num_columns = 0;
