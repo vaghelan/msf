@@ -57,6 +57,31 @@ class Admin extends CI_Controller
      $this->membership_model->delete_member($userid);  
   }
 
+  function update_email($userid, $username, $domain)
+  {
+   if (false == $this->membership_model->validate_user_id($userid))
+    {
+      echo "Invalid userid";
+      return;
+    } 
+    
+    $email = $username . "@" . $domain;
+  
+    $this->membership_model->update_email($userid, $email);  
+    
+    $user_info = $this->membership_model->get_user_details_by_id($userid);
+    
+    echo "Name: " . $user_info->name . "<br>";
+    echo "Email_address : " . $user_info->email_address . "<br>";
+    echo "Username :" . $user_info->username . "<br>";
+
+    
+    echo "done";
+    
+  
+  }
+    
+
   function delete_member_range($from, $to)
   {
     for ($i = $from; $i <= $to; $i++ )

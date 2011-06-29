@@ -676,6 +676,15 @@ class Membership_model extends CI_Model {
      $this->db->update('users', $data);  
   }
   
+  function update_email($userid, $email)
+  {
+   $data = array('email_address' => $email);
+    $this->db->where('id', $userid);
+     $this->db->update('users', $data);  
+    
+  
+  }
+  
   function update_member_my_team_members($userid)
   {
      $num = $this->get_num_team_members($userid);
