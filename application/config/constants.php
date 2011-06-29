@@ -37,6 +37,6 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
-define('APP_VERSION', '4.4.6');
+define('APP_VERSION', '4.4.7');
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
