@@ -130,7 +130,7 @@ class Admin extends CI_Controller
  function print_user_records_table_by_id()
   {
     
-    $data['user_recs'] = $this->membership_model->get_user_information_dump_orderby_score('email_address');
+    $data['user_recs'] = $this->membership_model->get_user_information_dump_orderby_score('id');
     $this->load->view('admin_user_info', $data);
   
   }  
@@ -165,7 +165,7 @@ class Admin extends CI_Controller
   function load_members()
   {
   
-  $fp = fopen('/home1/virtualt/public_html/nilesh/xxx.csv','r') or die("can't open file");
+  $fp = fopen('/home1/virtualt/public_html/nilesh/pune.csv','r') or die("can't open file");
 
 $count = 0;
 $num_columns = 0;
