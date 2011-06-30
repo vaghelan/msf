@@ -794,7 +794,7 @@ class Membership_model extends CI_Model {
             $userid == 3   || // damodar
             $userid == 19   || //srddha devi dasi
             $userid == 77  ||  //malini devi dasi
-            $userid == 1876 // Real admin
+            $userid == 2141 // Real admin
             ); 
     //|| $userid == 283);
   
