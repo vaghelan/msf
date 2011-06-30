@@ -346,10 +346,11 @@ class Membership_model extends CI_Model {
 
   function reset_password($username, $email_address)
   {
-
+    $email_address = rtrim(ltrim(strtolower($email_address)));
+    $username = rtrim(ltrim(strtolower($username)));
     $this->db->where('email_address', $email_address);
     if ($username != "")
-      $this->db->where('username', rtrim(ltrim(strtolower($username))));
+      $this->db->where('username', $username);
 		$query = $this->db->get('users');
 		
     if($query->num_rows >= 1)
@@ -372,7 +373,7 @@ class Membership_model extends CI_Model {
   function create_member($recruit_id)
 	{
 	    $username = rtrim(ltrim(strtolower($this->input->post('username'))));
-	    $email = ltrim(rtrim($this->input->post('email_address')));
+	    $email = ltrim(rtrim(strtolower($this->input->post('email_address'))));
 	    
     	$new_member_insert_data = array(
 		  'recruiter_id' => $this->input->post('recruit_id'),
@@ -396,6 +397,7 @@ class Membership_model extends CI_Model {
 	function create_member_load($rid, $name, $email, $username, $pwd)
 	{
 	    $username = rtrim(ltrim(strtolower($username)));
+	    $email = rtrim(ltrim(strtolower($email)));
     	$new_member_insert_data = array(
 		  'recruiter_id' => $rid,
 			'name' => $name,
@@ -678,7 +680,7 @@ class Membership_model extends CI_Model {
   
   function update_email($userid, $email)
   {
-   $data = array('email_address' => $email);
+   $data = array('email_address' => strtolower(rtrim(ltrim($email))));
     $this->db->where('id', $userid);
      $this->db->update('users', $data);  
     
@@ -887,7 +889,15 @@ class Membership_model extends CI_Model {
     
   
   }
-
+  
+  function get_duplicates()
+  {
+  
+    $sql = "select name, count(*) from users group by name having count(*) > 1 order by name";
+  	$q = $this->db->query($sql);
+  	return $q->result();
+  
+  }
   function delete_member($userid)
   {
    if ($this->validate_user_id($userid) == 0)

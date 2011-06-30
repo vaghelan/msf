@@ -96,6 +96,20 @@ class Admin extends CI_Controller
      $this->membership_model->delete_member($i);
     }  
   }
+  
+  function find_duplicates()
+  {
+    $result = $this->membership_model->get_duplicates();
+    echo "Start ...." . "<br>";
+    
+    foreach ($result as $row)
+    {
+      echo "Name: " . $row->name . "<br>";
+    
+    } 
+    echo "End...." . "<br>";
+  
+  }
 
   
   function print_user_records()
