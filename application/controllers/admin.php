@@ -380,6 +380,19 @@ fclose($fp) or die("can't close file");
   }
 
 
+  function fill_stats()
+  {
+    $num_registered = $this->membership_model->get_total_num_users();
+    $num_last_week = $this->membership_model->get_total_registered_last_week();
+    $today_reg = $this->membership_model->get_total_registered_today();
+    $num_book_distributors = $this->membership_model->get_total_book_distributors_all();
+    $total_books = $this->membership_model->get_total_books_distributed();
+    
+    $this->stats_model->set_current_stats($num_registered, $num_book_distributors, $total_books, $num_last_week, $today_reg);
+    
+  
+  }
+
 
 
 }
