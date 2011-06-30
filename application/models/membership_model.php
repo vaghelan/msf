@@ -896,6 +896,14 @@ class Membership_model extends CI_Model {
       return;                 
    }
 
+  if ($userid == 2141)
+   {
+      echo "Sorry Can not delete admin user" . "<br>";
+      return;                 
+   }
+
+
+
     $parent_id = $this->get_user_recruiter_id($userid);
     if ($parent_id == -1)
     {
