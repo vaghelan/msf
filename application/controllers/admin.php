@@ -277,5 +277,41 @@ fclose($fp) or die("can't close file");
   }
 
 
+  function delete_members()
+  {
+  
+  $fp = fopen('/home1/virtualt/public_html/nilesh/delete.csv','r') or die("can't open file");
+
+$count = 0;
+$num_columns = 0;
+$deleted = 0;
+
+while($csv_line = fgetcsv($fp,1024)) {
+    $count++;
+    
+    if ($count == 1)
+    {
+
+        continue;
+    }                
+    
+    echo '<br>';
+    echo "processing record " . $count . "<br>";
+        $id = rtrim(ltrim($csv_line[0]));
+        
+        $this->membership_model->delete_member($id);
+        
+        $deleted++;
+   
+}
+
+echo "Total number of records deleted " . $deleted . "<br>";
+
+ 
+fclose($fp) or die("can't close file");
+  
+  }
+
+
 
 }
