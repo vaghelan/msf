@@ -204,7 +204,7 @@ class Admin extends CI_Controller
   function load_members()
   {
   
-  $fp = fopen('/home1/virtualt/public_html/nilesh/Mohanvel.csv','r') or die("can't open file");
+  $fp = fopen('/home1/virtualt/public_html/nilesh/yadu_more.csv','r') or die("can't open file");
 
 $count = 0;
 $num_columns = 0;
@@ -233,16 +233,16 @@ while($csv_line = fgetcsv($fp,1024)) {
         //$seq = $csv_line[0];
         //if ($seq == "")
         //  continue;
-        $name = $csv_line[0];
+        $name = ltrim(rtrim($csv_line[0]));
         //$lastname = $csv_line[2];
         
         //$name = $firstname . " " . $lastname;
-        $email =  rtrim(ltrim($csv_line[1]));
+        $email =  strtolower(rtrim(ltrim($csv_line[1])));
         $split_email = explode('@', $email);
         $username = strtolower($split_email[0]);
          
-        $rid = $csv_line[2];
-        $num_books = $csv_line[3];
+        $rid = rtrim(ltrim($csv_line[2]));
+        $num_books = rtrim(ltrim($csv_line[3]));
          
         $id = 0;
         $username1 = $username;
@@ -311,6 +311,63 @@ echo "Total number of records deleted " . $deleted . "<br>";
 fclose($fp) or die("can't close file");
   
   }
+
+  function add_score_backend($userid, $score)
+  {
+      $evid = $this->events_model->get_current_event_id();
+      $tday = date("Y-m-d");
+      $bid = $this->books_model->get_book_id('Other');
+      $this->scores_model->add_score($evid, $userid, $bid, $score, $tday);          
+  
+  }
+
+
+  function add_score()
+  {
+  
+  $fp = fopen('/home1/virtualt/public_html/nilesh/add.csv','r') or die("can't open file");
+
+  $count = 0;
+  $num_columns = 0;
+  $added = 0;
+
+   while($csv_line = fgetcsv($fp,1024)) 
+   {
+    $count++;
+    
+    if ($count == 1)
+    {
+
+        continue;
+    }                
+    
+    echo '<br>';
+    echo "processing record " . $count . "<br>";
+        $id = rtrim(ltrim($csv_line[0]));
+        $score = rtrim(ltrim($csv_line[4]));
+        if (false == $this->membership_model->validate_user_id($id))
+        {
+          echo "ERROR : Invalid user id " . $userid . "<br>";
+          echo "ERROR : SKIPPING THIS LINE" . "<br>";
+          continue;
+        
+        }
+        
+     echo "Adding score for userid = " . $id . "  score = " . $score . "<br>";
+        
+       $this->add_score_backend($id, $score);
+        
+        $added++;
+   
+   }
+
+echo "Total number of records processed " . $added . "<br>";
+
+ 
+fclose($fp) or die("can't close file");
+  
+  }
+
 
 
 
