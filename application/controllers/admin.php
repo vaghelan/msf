@@ -204,7 +204,7 @@ class Admin extends CI_Controller
   function load_members()
   {
   
-  $fp = fopen('/home1/virtualt/public_html/nilesh/yadu_more.csv','r') or die("can't open file");
+  $fp = fopen('/home1/virtualt/public_html/nilesh/sunday.csv','r') or die("can't open file");
 
 $count = 0;
 $num_columns = 0;
@@ -256,7 +256,7 @@ while($csv_line = fgetcsv($fp,1024)) {
         $this->membership_model->create_member_load($rid, $name, $email, $username, $pwd);
         $user_info = $this->membership_model->get_user_details_by_name($username);
         echo "Imported " .  $user_info->name . " " . $user_info->username . "<br>";
-        // $this->email_model->send_signup_email($email, $name, $username, $pwd); 
+        $this->email_model->send_signup_email($email, $name, $username, $pwd); 
         if ($num_books)
         {
           
@@ -312,20 +312,31 @@ fclose($fp) or die("can't close file");
   
   }
 
-  function add_score_backend($userid, $score)
+  function add_score($userid, $score)
   {
+ 
+       if (false == $this->membership_model->validate_user_id($userid))
+      {
+        echo "ERROR : Invalid user id " . $userid . "<br>";
+        return;
+      
+      }
+ 
+  
+  
       $evid = $this->events_model->get_current_event_id();
       $tday = date("Y-m-d");
       $bid = $this->books_model->get_book_id('Other');
-      $this->scores_model->add_score($evid, $userid, $bid, $score, $tday);          
+      $this->scores_model->add_score($evid, $userid, $bid, $score, $tday);
+      echo "Added score for userid = " . $userid . "  score = " . $score . "<br>";          
   
   }
 
 
-  function add_score()
+  function add_score_bulk()
   {
   
-  $fp = fopen('/home1/virtualt/public_html/nilesh/add.csv','r') or die("can't open file");
+  $fp = fopen('/home1/virtualt/public_html/nilesh/banglore_add.csv','r') or die("can't open file");
 
   $count = 0;
   $num_columns = 0;
@@ -347,15 +358,15 @@ fclose($fp) or die("can't close file");
         $score = rtrim(ltrim($csv_line[4]));
         if (false == $this->membership_model->validate_user_id($id))
         {
-          echo "ERROR : Invalid user id " . $userid . "<br>";
+          echo "ERROR : Invalid user id " . $id . "<br>";
           echo "ERROR : SKIPPING THIS LINE" . "<br>";
           continue;
         
         }
         
-     echo "Adding score for userid = " . $id . "  score = " . $score . "<br>";
+     
         
-       $this->add_score_backend($id, $score);
+       $this->add_score($id, $score);
         
         $added++;
    
